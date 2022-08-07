@@ -1,5 +1,8 @@
 const express = require('express');
 const cors = require('cors');
+const authRoutes = require('../routes/auth');
+const usersRoutes = require('../routes/users');
+const db = require('../database/connection');
 
 
 class Server {
@@ -9,16 +12,16 @@ class Server {
         this.paths = {
             auth: '/api/v1/auth',
             users: '/api/v1/users',
-            records: '/api/v1/records',
         }
 
-        // this.connectDB()
+        this.connectDB()
         this.middlewares()
-        // this.routes()
+        this.routes()
     }
 
     async connectDB() {
         try {
+            // await db.sync({ alter: true });
             await db.authenticate();
             console.log('Database connected');
         } catch (error) {
@@ -34,6 +37,11 @@ class Server {
         this.app.use(express.static('public'));
         //Body parser
         this.app.use(express.json());
+    }
+
+    routes() {
+        this.app.use(this.paths.auth, authRoutes);
+        this.app.use(this.paths.users, usersRoutes);
     }
 
 
