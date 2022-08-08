@@ -12,13 +12,6 @@ const login = async (req, res) => {
             where: { email }
         });
 
-        //Verify is user is active
-        if (!user.status) {
-            return response.status(400).json({
-                msg: 'invalid email or password - status'
-            })
-        }
-
         //Verify if password is correct
         const isMatch = await bcrypt.compare(password, user.password);
 
