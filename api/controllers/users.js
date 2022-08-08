@@ -62,7 +62,7 @@ const updateUser = async (req, res) => {
             password
         });
 
-        res.json({
+        res.status(200).json({
             msg: 'User updated',
             user
         });
