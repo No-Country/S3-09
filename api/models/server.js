@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const authRoutes = require('../routes/auth');
-const usersRoutes = require('../routes/users');
+const fileUpload = require('express-fileupload');
+const { authRoutes, uploadsRoutes, usersRoutes } = require('../routes')
 const db = require('../database/connection');
 
 
@@ -11,6 +11,7 @@ class Server {
         this.port = process.env.PORT || 3000;
         this.paths = {
             auth: '/api/v1/auth',
+            uploads: '/api/v1/uploads',
             users: '/api/v1/users',
         }
 
@@ -36,10 +37,16 @@ class Server {
         this.app.use(express.static('public'));
         //Body parser
         this.app.use(express.json());
+        //File uploads
+        this.app.use(fileUpload({
+            useTempFiles: true,
+            tempFileDir: '/tmp/'
+        }));
     }
 
     routes() {
         this.app.use(this.paths.auth, authRoutes);
+        this.app.use(this.paths.uploads, uploadsRoutes);
         this.app.use(this.paths.users, usersRoutes);
     }
 
