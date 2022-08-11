@@ -1,19 +1,49 @@
-# reserbar
+# ReserBar - FrontEnd 
+  
+  ![STATUS](https://img.shields.io/badge/STATUS-DEVELOPMENT-green) ![WATCHERS](https://img.shields.io/github/watchers/No-Country/S3-09?style=social) 
+   
+---
+### Tecnologías utilizadas
 
-A new Flutter project.
-<p align="center">
-    <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter"/>
+<p >
+    <img src="https://img.shields.io/badge/Flutter-02569B?style=plastic&logo=flutter&logoColor=white&labelColor=blue&color=blue" alt="Flutter"/>
 </p>
 
-## Getting Started
+## Comenzando 🚀
 
-This project is a starting point for a Flutter application.
+_Para iniciar el proyecto tenés que clonar el repositorio_
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Pre-requisitos 📋
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+_Para ejecutar la app necesitás tener una computadora e instalar [Android Studio](), [Flutter SDK]() y cruzar los dedos._
+
+
+### Instalación 🔧
+
+_Bla bla bla_
+_Luego ejecutar en el terminal_
+```
+flutter doctor
+```
+_fluter doctor va a mostrarte si tu instalación está correcta o si hay algún conflicto con la instalación. Lo que sigue es usar sabiamente Google y Stackoverflow._
+
+
+### Ejecutar
+_Desde el terminal y posicionado dentro del directorio "lib", ejecutar el comando:_
+```
+flutter run
+```
+## ⌨️ con ❤️ por nuestro Frontend Team
+
+- #### Federico Castro
+
+  [GitHub](https://github.com/FedericoGabrielCastro)
+  [Linkedin](https://www.linkedin.com/in/federico-gabriel-castro-837417186/)
+
+- #### Omar Lestrade
+  [GitHub](https://github.com/Lestradez)
+  [Linkedin](https://www.linkedin.com/in/omar-lestrade/)
+
+
+
