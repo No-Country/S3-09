@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/connection');
+const Dish = require('../models/dish');
 
 const Restaurant = sequelize.define('restaurant', {
 
@@ -25,18 +26,21 @@ const Restaurant = sequelize.define('restaurant', {
         type: DataTypes.STRING,
         defaultValue: 'no-img.jpg'
     },
-    dishes: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    available_dates: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    }
 },
     {
         timestamps: false
     }
 );
+
+//Associations
+Restaurant.hasMany(Dish, {
+    foreignKey: 'restaurant_id',
+    as: 'dishes'
+});
+
+Dish.belongsTo(Restaurant, {
+    foreignKey: 'restaurant_id',
+    as: 'restaurant'
+});
 
 module.exports = Restaurant;
