@@ -1,32 +1,23 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/connection');
 
-const User = sequelize.define('user', {
+const Card = sequelize.define('card', {
     
-    name: {
+    full_name: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    username: {
+    card_number: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    email: {
+    expires: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true
     },
-    password: {
-        type: DataTypes.STRING,
+    CVV: {
+        type: DataTypes.INTEGER,
         allowNull: false
-    },
-    img: {
-        type: DataTypes.STRING,
-        defaultValue: 'no-img.jpg'
-    },
-    google: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false
     }
 },
     {
@@ -34,4 +25,4 @@ const User = sequelize.define('user', {
     }
 );
 
-module.exports = User;
+module.exports = Card;

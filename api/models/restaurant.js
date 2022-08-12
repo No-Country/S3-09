@@ -1,32 +1,37 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/connection');
 
-const User = sequelize.define('user', {
-    
+const Restaurant = sequelize.define('restaurant', {
+
     name: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    username: {
+    address: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
+    hours: {
+        type: DataTypes.TIME,
     },
-    password: {
+    description: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    price_range: {
+        type: DataTypes.STRING,
     },
     img: {
         type: DataTypes.STRING,
         defaultValue: 'no-img.jpg'
     },
-    google: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false
+    dishes: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    available_dates: {
+        type: DataTypes.INTEGER,
+        allowNull: false
     }
 },
     {
@@ -34,4 +39,4 @@ const User = sequelize.define('user', {
     }
 );
 
-module.exports = User;
+module.exports = Restaurant;
