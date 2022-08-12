@@ -3,6 +3,9 @@ const bookingsRoutes = require('./bookings');
 const dishesRoutes = require('./dishes');
 const uploadsRoutes = require('./uploads');
 const usersRoutes = require('./users');
+const restaurantsRoutes = require('./restaurants');
+const cardsRoutes = require('./cards');
+
 
 
 module.exports = {
@@ -10,5 +13,7 @@ module.exports = {
     bookingsRoutes,
     dishesRoutes,
     usersRoutes,
-    uploadsRoutes
+    uploadsRoutes,
+    restaurantsRoutes,
+    cardsRoutes
 }

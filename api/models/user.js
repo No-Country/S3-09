@@ -3,6 +3,7 @@ const sequelize = require('../database/connection');
 const Booking = require('../models/booking');
 
 const User = sequelize.define('user', {
+    
     name: {
         type: DataTypes.STRING,
         allowNull: false
