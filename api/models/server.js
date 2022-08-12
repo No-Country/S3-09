@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
-const { authRoutes, uploadsRoutes, usersRoutes } = require('../routes')
+const { authRoutes, uploadsRoutes, usersRoutes, bookingsRoutes, dishesRoutes } = require('../routes')
 const db = require('../database/connection');
 
 
@@ -11,6 +11,8 @@ class Server {
         this.port = process.env.PORT || 3000;
         this.paths = {
             auth: '/api/v1/auth',
+            bookings: '/api/v1/bookings',
+            dishes: '/api/v1/dishess',
             uploads: '/api/v1/uploads',
             users: '/api/v1/users',
         }
@@ -46,6 +48,8 @@ class Server {
 
     routes() {
         this.app.use(this.paths.auth, authRoutes);
+        this.app.use(this.paths.bookings, bookingsRoutes);
+        this.app.use(this.paths.dishes, dishesRoutes);
         this.app.use(this.paths.uploads, uploadsRoutes);
         this.app.use(this.paths.users, usersRoutes);
     }
