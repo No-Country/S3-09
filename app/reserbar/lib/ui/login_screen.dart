@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+// ignore: depend_on_referenced_packages
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 
 // Login Page.
 class LoginScreen extends StatefulWidget {
@@ -15,9 +16,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
   // Edditing controllers.
   final TextEditingController emailController =
-      new TextEditingController(); // Email controller.
+      TextEditingController(); // Email controller.
   final TextEditingController passwordController =
-      new TextEditingController(); // Password controller.
+      TextEditingController(); // Password controller.
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
           hintStyle: const TextStyle(fontSize: 15),
           contentPadding:
               const EdgeInsets.fromLTRB(20, 15, 20, 15), // Icon Position.
-          hintText: "Password", // Payload.
+          hintText: "Contraseña", // Payload.
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10), // Border Radius.
           ),
@@ -69,8 +70,14 @@ class _LoginScreenState extends State<LoginScreen> {
       borderRadius: BorderRadius.circular(10),
       textStyle: const TextStyle(fontSize: 15),
       child: MaterialButton(
+        minWidth: 400,
+        height: 50,
+        color: const Color.fromRGBO(20, 57, 129, 1),
         onPressed: () {},
-        child: const Text("Iniciar sesión"),
+        child: const Text(
+          "Iniciar sesión",
+          style: TextStyle(color: Colors.white, letterSpacing: 1),
+        ),
       ),
     );
 
@@ -87,13 +94,40 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  SizedBox(
-                      height: 200,
-                      child: Image.asset(
-                        "assets/logo.png",
-                        fit: BoxFit.contain,
-                      )),
-                  const SizedBox(height: 30),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      // const CircleAvatar(
+                      //   backgroundColor: Colors.blue,
+                      SizedBox(
+                        height: 150,
+                        child: CircleAvatar(
+                            // #143981
+                            backgroundColor:
+                                const Color.fromRGBO(20, 57, 129, 1),
+                            radius: 30.0,
+                            // ignore: use_full_hex_values_for_flutter_colors
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10.0),
+                              child: const Icon(
+                                Icons.restaurant_menu,
+                                size: 40.0,
+                                color: Colors.white,
+                              ),
+                            )),
+                      ),
+                      const SizedBox(width: 20),
+                      const Text("Diiner",
+                          style: TextStyle(
+                              fontFamily: 'Nunito',
+                              fontSize: 40,
+                              letterSpacing: 2,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black))
+                    ],
+                  ),
+                  // const SizedBox(height: 10),
                   emailField,
                   const SizedBox(height: 10),
                   passwordField,
@@ -114,9 +148,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
                   submitButton,
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -135,7 +169,15 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       )
                     ],
-                  )
+                  ),
+                  const SizedBox(height: 20),
+                  const Text("Iniciar sesión con redes sociales"),
+                  const SizedBox(height: 20),
+                  SignInButton(
+                    Buttons.GoogleDark,
+                    text: "Ingresar con Google",
+                    onPressed: () {},
+                  ),
                 ],
               ),
             ),
