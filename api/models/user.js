@@ -1,7 +1,9 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/connection');
+const Booking = require('../models/booking');
 
 const User = sequelize.define('user', {
+    
     name: {
         type: DataTypes.STRING,
         allowNull: false
@@ -33,4 +35,7 @@ const User = sequelize.define('user', {
     }
 );
 
+//Associations
+User.hasMany(Booking, { foreignKey: 'user_id', as: 'bookings' });
+Booking.belongsTo(User, { foreignKey: 'user_id', as: 'user' });
 module.exports = User;
