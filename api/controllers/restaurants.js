@@ -4,6 +4,7 @@ const getRestaurants = async (req, res) => {
 
     const restaurants = await Restaurant.findAll({
         attributes: { exclude: ['hours', 'price_range'] },
+        include: ['dishes']
     });
 
     const total = await Restaurant.count()
@@ -36,8 +37,6 @@ const createRestaurant = async (req, res) => {
         name,
         address,
         description,
-        dishes,
-        available_dates
     });
 
     await restaurant.save();
