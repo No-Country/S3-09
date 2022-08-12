@@ -7,7 +7,7 @@ const router = Router();
 
 router.get('/', getRestaurants);
 
-router.get('/:id', 
+router.get('/:id',
     validRestoID,
     getRestaurantById);
 
@@ -15,8 +15,6 @@ router.post('/', [
     check('name', 'Name is required').not().isEmpty(),
     check('address', 'Address is required').not().isEmpty(),
     check('description', 'Description is required').not().isEmpty(),
-    check('dishes', 'Dishes are required').not().isEmpty(),
-    check('available_dates', 'Available dates are required').not().isEmpty(),
     validateInputs
 ], createRestaurant);
 
