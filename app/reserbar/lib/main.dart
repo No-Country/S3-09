@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:reserbar/pages/home_page.dart';
 import 'package:reserbar/pages/login_user.dart';
 import 'package:reserbar/ui/register_screen.dart';
 
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         routes: {
           "/login": (context) => const LoginUser(),
           "/register": (context) => const RegisterScreen(),
+          "/app": (context) => const HomePage(),
         });
   }
 }
