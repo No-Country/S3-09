@@ -1,4 +1,4 @@
-const User = require('../models/user')
+const { User, Restaurant, Dish } = require('../models');
 const cloudinary = require('cloudinary').v2
 require('dotenv').config();
 cloudinary.config({
@@ -7,7 +7,6 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_SECRET,
     secure: true
 });
-
 
 
 const uploadToCloudinary = async (req, res) => {
@@ -19,9 +18,16 @@ const uploadToCloudinary = async (req, res) => {
     switch (model) {
         case 'users':
             checkedModel = await User.findByPk(id);
-            if (!checkedModel) return res.status(404).send('User not found')
+            if (!checkedModel) return res.status(404).json({ msg: 'User not found' })
             break;
-
+        case 'restaurants':
+            checkedModel = await Restaurant.findByPk(id);
+            if (!checkedModel) return res.status(404).json({ msg: 'Restaurant not found' })
+            break;
+        case 'dishes':
+            checkedModel = await Dish.findByPk(id);
+            if (!checkedModel) return res.status(404).json({ msg: 'Dish not found' })
+            break;
         default:
             return res.status(400).send('Model not found')
             break;
