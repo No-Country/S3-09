@@ -1,9 +1,8 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/connection');
-const Booking = require('../models/booking');
-
+const { Booking, Card } = require('../models/index');
 const User = sequelize.define('user', {
-    
+
     name: {
         type: DataTypes.STRING,
         allowNull: false
@@ -23,7 +22,7 @@ const User = sequelize.define('user', {
     },
     img: {
         type: DataTypes.STRING,
-        defaultValue: 'no-img.jpg'
+        allowNull: true
     },
     google: {
         type: DataTypes.BOOLEAN,
@@ -38,4 +37,8 @@ const User = sequelize.define('user', {
 //Associations
 User.hasMany(Booking, { foreignKey: 'user_id', as: 'bookings' });
 Booking.belongsTo(User, { foreignKey: 'user_id', as: 'user' });
+
+User.hasMany(Card, { foreignKey: 'user_id', as: 'cards' });
+Card.belongsTo(User, { foreignKey: 'user_id', as: 'user' });
+
 module.exports = User;
