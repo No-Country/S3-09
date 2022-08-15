@@ -37,7 +37,8 @@ const createUser = async (req, res) => {
         name,
         email,
         username,
-        password: await bcryptjs.hash(password, 10)
+        password: await bcryptjs.hash(password, 10),
+        img: 'https://res.cloudinary.com/jonmenez/image/upload/v1660574559/Diiner/Ellipse_3_x5t9j0.png'
     });
 
     await user.save();
@@ -62,7 +63,7 @@ const updateUser = async (req, res) => {
             password
         });
 
-        res.status(200).json({
+        res.status(201).json({
             msg: 'User updated',
             user
         });
