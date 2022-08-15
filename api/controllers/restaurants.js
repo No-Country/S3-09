@@ -2,12 +2,13 @@ const Restaurant = require('../models/restaurant');
 
 const getRestaurants = async (req, res) => {
 
-    const restaurants = await Restaurant.findAll({
-        attributes: { exclude: ['hours', 'price_range'] },
-        include: ['dishes']
-    });
-
-    const total = await Restaurant.count()
+    const [restaurants, total] = await Promise.all([
+        Restaurant.findAll({
+            attributes: { exclude: ['hours', 'price_range'] },
+            include: ['dishes']
+        }),
+        Restaurant.count()
+    ])
 
     res.json({
         total,
@@ -31,7 +32,7 @@ const getRestaurantById = async (req, res) => {
 
 const createRestaurant = async (req, res) => {
 
-    const { name, address, description, dishes, available_dates } = req.body;
+    const { name, address, description } = req.body;
 
     const restaurant = new Restaurant({
         name,
@@ -50,7 +51,7 @@ const createRestaurant = async (req, res) => {
 const updateRestaurant = async (req, res) => {
 
     const { id } = req.params;
-    const { name, address, description, dishes, available_dates } = req.body;
+    const { name, address, description } = req.body;
 
     try {
         const restaurant = await Restaurant.findByPk(id);
@@ -59,8 +60,6 @@ const updateRestaurant = async (req, res) => {
             name,
             address,
             description,
-            dishes,
-            available_dates
         });
 
         res.status(201).json({
