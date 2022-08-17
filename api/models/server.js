@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
-const { authRoutes, uploadsRoutes, usersRoutes, restaurantsRoutes, dishesRoutes, bookingsRoutes, cardsRoutes } = require('../routes')
+const { authRoutes, uploadsRoutes, usersRoutes, restaurantsRoutes, dishesRoutes, bookingsRoutes, cardsRoutes, favoritesRoutes } = require('../routes')
 const db = require('../database/connection');
 
 
@@ -14,6 +14,7 @@ class Server {
             bookings: '/api/v1/bookings',
             cards: '/api/v1/cards',
             dishes: '/api/v1/dishes',
+            favorites: '/api/v1/favorites',
             restaurants: '/api/v1/restaurants',
             uploads: '/api/v1/uploads',
             users: '/api/v1/users',
@@ -26,7 +27,7 @@ class Server {
 
     async connectDB() {
         try {
-            await db.sync({ force: true });
+            await db.sync({ alter: true });
             console.log('Database connected');
         } catch (error) {
             console.log(error);
@@ -53,9 +54,10 @@ class Server {
         this.app.use(this.paths.bookings, bookingsRoutes);
         this.app.use(this.paths.cards, cardsRoutes);
         this.app.use(this.paths.dishes, dishesRoutes);
+        this.app.use(this.paths.favorites, favoritesRoutes);
         this.app.use(this.paths.restaurants, restaurantsRoutes);
-        this.app.use(this.paths.users, usersRoutes);
         this.app.use(this.paths.uploads, uploadsRoutes);
+        this.app.use(this.paths.users, usersRoutes);
     }
 
 
