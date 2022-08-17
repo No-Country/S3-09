@@ -97,7 +97,6 @@ const updateUser = async (req, res) => {
 
     try {
         const user = await User.findByPk(id);
-        const booking = await Booking.findByPk(2);
 
         user.addBooking(booking);
         await user.update({
