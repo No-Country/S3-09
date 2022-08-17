@@ -1,19 +1,21 @@
 const authRoutes = require('./auth');
 const bookingsRoutes = require('./bookings');
+const cardsRoutes = require('./cards');
 const dishesRoutes = require('./dishes');
+const favoritesRoutes = require('./favorites');
+const restaurantsRoutes = require('./restaurants');
 const uploadsRoutes = require('./uploads');
 const usersRoutes = require('./users');
-const restaurantsRoutes = require('./restaurants');
-const cardsRoutes = require('./cards');
 
 
 
 module.exports = {
     authRoutes,
     bookingsRoutes,
+    cardsRoutes,
     dishesRoutes,
-    usersRoutes,
-    uploadsRoutes,
+    favoritesRoutes,
     restaurantsRoutes,
-    cardsRoutes
+    uploadsRoutes,
+    usersRoutes,
 }
