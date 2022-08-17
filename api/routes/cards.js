@@ -2,19 +2,20 @@ const { Router } = require('express');
 const { check } = require('express-validator');
 const { validateInputs, validCardID } = require('../middlewares/');
 const { getCards, getCardById, createCard, updateCard, deleteCard } = require('../controllers/cards');
+const { checkCardDate } = require('../helpers/validateDB');
 
 const router = Router();
 
 router.get('/', getCards);
 
-router.get('/:id', 
+router.get('/:id',
     validCardID,
     getCardById);
 
 router.post('/', [
     check('full_name', 'Name is required').not().isEmpty(),
     check('card_number', 'Number is required').not().isEmpty(),
-    check('expires', 'Expiration date is required').not().isEmpty(),
+    check('expires').custom(checkCardDate),
     check('CVV', 'CVV is required').not().isEmpty(),
     validateInputs
 ], createCard);
