@@ -1,13 +1,17 @@
 const bcryptjs = require('bcryptjs');
+const { Booking } = require('../models');
 const User = require('../models/user');
+const { getBookings } = require('./bookings');
 
 const getUsers = async (req, res) => {
 
-    const users = await User.findAll({
-        attributes: { exclude: ['password', 'google'] },
-    });
-
-    const total = await User.count()
+    const [users, total] = await Promise.all([
+        User.findAll({
+            attributes: { exclude: ['password', 'google'] },
+            include: "bookings"
+        }),
+        User.count()
+    ]);
 
     res.json({
         total,
@@ -25,8 +29,45 @@ const getUserById = async (req, res) => {
         },
     });
 
-    res.json(user);
+    res.json({
+        user,
+    })
+}
 
+const getInfoByUserId = async (req, res) => {
+
+    const { id, userInfo } = req.params;
+
+    const user = await User.findByPk(id);
+
+    switch (userInfo) {
+        case 'bookings':
+            const bookings = await user.getBookings();
+            (bookings.length === 0)
+                ? res.status(400).json({
+                    msg: 'You have not made any reservation yet',
+                })
+                : res.json({
+                    bookings
+                });
+            break;
+        case 'cards':
+            const cards = await user.getCards();
+            (cards.length === 0)
+                ? res.status(400).json({
+                    msg: 'we did not find any card,',
+                })
+                : res.json({
+                    cards
+                });
+            break;
+
+        default:
+            res.json({
+                msg: 'userInfo not found, it must be bookings or cards',
+            });
+            break;
+    }
 }
 
 const createUser = async (req, res) => {
@@ -56,7 +97,9 @@ const updateUser = async (req, res) => {
 
     try {
         const user = await User.findByPk(id);
+        const booking = await Booking.findByPk(2);
 
+        user.addBooking(booking);
         await user.update({
             name,
             email,
@@ -95,5 +138,6 @@ module.exports = {
     getUserById,
     createUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    getInfoByUserId
 }

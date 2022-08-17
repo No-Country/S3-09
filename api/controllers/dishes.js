@@ -1,10 +1,16 @@
 const Dish = require('../models/dish');
 
 const getDishes = async (req, res) => {
-    const dishes = await Dish.findAll({
-        include: ['restaurant']
+    const [dishes, total] = await Promise.all([
+        Dish.findAll({
+            include: ['restaurant']
+        }),
+        Dish.count()
+    ])
+    res.json({
+        total,
+        dishes
     });
-    res.json(dishes);
 }
 
 const createDish = async (req, res) => {

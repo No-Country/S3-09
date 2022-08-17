@@ -2,10 +2,10 @@ const Card = require('../models/card');
 
 const getCards = async (req, res) => {
 
-    const cards = await Card.findAll();
-
-    const total = await Card.count()
-
+    const [total, cards] = await Promise.all([
+        Card.count(),
+        Card.findAll()
+    ]);
     res.json({
         total,
         cards
@@ -29,12 +29,7 @@ const createCard = async (req, res) => {
 
     const { full_name, card_number, expires, CVV } = req.body;
 
-    const card = new Card({
-        full_name,
-        card_number,
-        expires,
-        CVV
-    });
+    const card = new Card(req.body);
 
     await card.save();
 
