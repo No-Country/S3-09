@@ -26,10 +26,17 @@ const getCardById = async (req, res) => {
 }
 
 const createCard = async (req, res) => {
+    const userId = req.userId
 
     const { full_name, card_number, expires, CVV } = req.body;
 
-    const card = new Card(req.body);
+    const card = new Card({
+        full_name,
+        card_number,
+        expires,
+        CVV,
+        user_id: userId
+    });
 
     await card.save();
 
