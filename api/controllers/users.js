@@ -1,8 +1,9 @@
 const bcryptjs = require('bcryptjs');
-const { Booking } = require('../models');
+const { Booking, Restaurant } = require('../models');
 const User = require('../models/user');
 const { getBookings } = require('./bookings');
 
+//Get all users
 const getUsers = async (req, res) => {
 
     const [users, total] = await Promise.all([
@@ -19,6 +20,7 @@ const getUsers = async (req, res) => {
     });
 }
 
+//Get user by id
 const getUserById = async (req, res) => {
 
     const { id } = req.params;
@@ -34,6 +36,7 @@ const getUserById = async (req, res) => {
     })
 }
 
+//Get userInfo by user'id, including bookings, cards and favorites
 const getInfoByUserId = async (req, res) => {
 
     const { id, userInfo } = req.params;
@@ -61,6 +64,22 @@ const getInfoByUserId = async (req, res) => {
                     cards
                 });
             break;
+        case 'favorites':
+            const favoritesArr = await user.getFavorites();
+            //Create an array of restaurant objects
+            const favorites = await Restaurant.findAll({
+                where: {
+                    id: favoritesArr.map(favorite => favorite.restaurant_id)
+                }
+            });
+            (favorites.length === 0)
+                ? res.status(400).json({
+                    msg: 'we did not find any favorites,',
+                })
+                : res.json({
+                    favorites
+                });
+            break;
 
         default:
             res.json({
@@ -70,6 +89,7 @@ const getInfoByUserId = async (req, res) => {
     }
 }
 
+//Create user
 const createUser = async (req, res) => {
 
     const { name, email, username, password } = req.body;
@@ -90,6 +110,7 @@ const createUser = async (req, res) => {
     });
 }
 
+//Update user
 const updateUser = async (req, res) => {
 
     const { id } = req.params;
@@ -120,6 +141,7 @@ const updateUser = async (req, res) => {
     }
 }
 
+//Delete user
 const deleteUser = async (req, res) => {
     const { id } = req.params;
     const user = await User.findByPk(id);
@@ -138,5 +160,5 @@ module.exports = {
     createUser,
     updateUser,
     deleteUser,
-    getInfoByUserId
+    getInfoByUserId,
 }
