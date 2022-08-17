@@ -22,26 +22,36 @@ const existUsername = async (username) => {
 
 //Check if card's date is valid
 const checkCardDate = (expires) => {
+
+    if (!expires) {
+        throw new Error('Expires is required');
+    }
+
     const date = new Date();
     const [currentYear, currentMonth] = [date.getFullYear(), date.getMonth() + 1];
     const expiresArr = expires.split('/');
-    console.log('xpiresArr.lenth: ', expiresArr.length, 'month: ', expiresArr[0]);
-    console.log('currentMonth: ', expiresArr[0].length);
-    console.log(expiresArr[1] < currentYear)
 
+    //Format dates to compare with current date
+    const monthNum = expiresArr[0].charAt(0) == 0 ? expiresArr[0].charAt(1) : expiresArr[0];
+    const yearNum = '20' + expiresArr[1];
+
+    //Check if card's date is valid
     if (expiresArr.length !== 2 || expiresArr[0].length !== 2) {
         throw new Error('invalid expires date - valid format: MM/YY');
     }
 
-
-    if (expiresArr[0] > 12 || expiresArr[0] == 0) {
+    //Check if card's date is valid month
+    if (monthNum > 12 || monthNum == 0) {
         throw new Error('invalid month - valid range: 1-12');
     }
 
-    if (expiresArr[1] < currentYear) {
+    //Check if card's date is valid year
+    if (yearNum < currentYear) {
         throw new Error('Card expired - please update your card');
     }
-    if (expiresArr[1] === currentYear && expiresArr[0] < currentMonth) {
+
+    //Check if card's date is expired
+    if (yearNum == currentYear && monthNum < currentMonth) {
         throw new Error('Card expired - please update your card this year');
     }
     return true
