@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 
 import 'package:reserbar/ui/perfil_screen.dart';
 import 'package:reserbar/ui/qr_screen.dart';
@@ -14,15 +13,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  @override
-  void initState() {
-    _selectedIndex = 0;
-    debugPrint("adsad $_selectedIndex"); // DEBUG
-    super.initState();
-  }
-
   int _selectedIndex = 0;
 
+  // ignore: prefer_typing_uninitialized_variables
   var _currentPage;
 
   void _onItemTapped(int index) {
@@ -37,17 +30,17 @@ class _HomePageState extends State<HomePage> {
         break;
       case 1:
         setState(() {
-          _currentPage = const QrScreen();
+          _currentPage = const SearchScreen();
         });
         break;
       case 2:
         setState(() {
-          _currentPage = const ProfileScreen();
+          _currentPage = const QrScreen();
         });
         break;
       case 3:
         setState(() {
-          _currentPage = const SearchScreen();
+          _currentPage = const ProfileScreen();
         });
         break;
       default:
@@ -65,20 +58,20 @@ class _HomePageState extends State<HomePage> {
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.restaurant_menu),
-            label: 'ReserBar',
+            icon: Icon(Icons.home_filled),
+            label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.qr_code),
+            icon: Icon(Icons.search),
+            label: 'Buscar',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.qr_code_scanner),
             label: 'Mi ID',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),
             label: 'Perfil',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Buscar',
           ),
         ],
         currentIndex: _selectedIndex,
