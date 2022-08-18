@@ -1,7 +1,6 @@
 const bcryptjs = require('bcryptjs');
-const { Booking, Restaurant } = require('../models');
+const { Restaurant } = require('../models');
 const User = require('../models/user');
-const { getBookings } = require('./bookings');
 
 //Get all users
 const getUsers = async (req, res) => {
@@ -83,7 +82,7 @@ const getInfoByUserId = async (req, res) => {
 
         default:
             res.json({
-                msg: 'userInfo not found, it must be bookings or cards',
+                msg: 'userInfo not found, it must be bookings, cards or favorites',
             });
             break;
     }
