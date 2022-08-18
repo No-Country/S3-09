@@ -2,7 +2,6 @@ const Booking = require('../models/booking');
 
 const getBookings = async (req, res) => {
     const bookings = await Booking.findAll({
-        include: ['calendar'],
     });
     res.json(bookings);
 }
@@ -32,8 +31,51 @@ const createBooking = async (req, res) => {
     });
 }
 
+const updateBooking = async (req, res) => {
+
+    const { id } = req.params;
+    const { clients, date, time } = req.body;
+
+    try {
+        const booking = await Booking.findByPk(id);
+
+        await booking.update({
+            clients,
+            date,
+            time
+        });
+
+        res.status(201).json({
+            msg: 'Booking updated',
+            card
+        });
+
+    } catch (error) {
+        res.status(500).json(
+            console.log(error),
+            {
+                msg: 'Error updating booking'
+            }
+        );
+    }
+}
+
+const deleteBooking = async (req, res) => {
+    const { id } = req.params;
+    const booking = await Booking.findByPk(id);
+
+    booking.destroy();
+
+    res.json({
+        msg: 'Booking deleted',
+        booking
+    });
+}
+
 module.exports = {
     getBookings,
     getBooking,
-    createBooking
+    createBooking,
+    updateBooking,
+    deleteBooking
 }

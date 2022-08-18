@@ -27,7 +27,7 @@ class Server {
 
     async connectDB() {
         try {
-            await db.sync({ alter: true });
+            await db.sync({ force: true });
             console.log('Database connected');
         } catch (error) {
             console.log(error);

@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/connection');
-const Dish = require('../models/dish');
-
+const Dish  = require('../models/dish');
+const Booking = require('../models/booking')
 const Restaurant = sequelize.define('restaurant', {
 
     name: {
@@ -35,12 +35,16 @@ const Restaurant = sequelize.define('restaurant', {
 //Associations
 Restaurant.hasMany(Dish, {
     foreignKey: 'restaurant_id',
-    as: 'dishes'
+    as: 'dish'
 });
 
 Dish.belongsTo(Restaurant, {
     foreignKey: 'restaurant_id',
     as: 'restaurant'
 });
+
+
+Restaurant.hasMany(Booking, { foreignKey: 'restaurant_id', as: 'booking' });
+Booking.belongsTo(Restaurant, { foreignKey: 'restaurant_id', as: 'restaurant' });
 
 module.exports = Restaurant;
