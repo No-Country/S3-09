@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   // ignore: prefer_typing_uninitialized_variables
-  var _currentPage;
+  Widget _currentPage = const Home();
 
   void _onItemTapped(int index) {
     setState(() {
