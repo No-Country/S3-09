@@ -63,9 +63,9 @@ const updateBooking = async (req, res) => {
 
 const deleteBooking = async (req, res) => {
     const { id } = req.params;
-    const restaurant = await Booking.findByPk(id);
+    const booking = await Booking.findByPk(id);
 
-    restaurant.destroy();
+    booking.destroy();
 
     res.json({
         msg: 'Booking deleted',
