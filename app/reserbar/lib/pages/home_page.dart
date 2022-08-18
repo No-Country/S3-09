@@ -5,6 +5,8 @@ import 'package:reserbar/ui/qr_screen.dart';
 import 'package:reserbar/ui/reserbar_screen.dart';
 import 'package:reserbar/ui/search_screen.dart';
 
+import 'home_screen.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -25,7 +27,7 @@ class _HomePageState extends State<HomePage> {
     switch (_selectedIndex) {
       case 0:
         setState(() {
-          _currentPage = const ReserbarScreen();
+          _currentPage = const Home();
         });
         break;
       case 1:

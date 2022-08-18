@@ -112,7 +112,7 @@ class BarCard extends StatelessWidget {
             children: [ 
               favorite=='true' ? const Icon(Icons.favorite, color: Color.fromRGBO(233, 33, 189, 1), size: 25.0,) : const Icon(Icons.favorite_border, color: Color.fromRGBO(233, 33, 189, 1), size: 20.0,),
               Padding(
-                padding: EdgeInsets.all(3.0),
+                padding: const EdgeInsets.all(3.0),
                 child: Text(points,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
