@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/connection');
+const Dish = require('../models/dish');
 
 const Booking = sequelize.define('booking', {
     clients: {
@@ -8,7 +9,7 @@ const Booking = sequelize.define('booking', {
         allowNull: false
     },
     date: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
         allowNull: false
     },
@@ -27,6 +28,15 @@ const Booking = sequelize.define('booking', {
     }
 )
 
+Booking.hasMany(Dish, {
+    foreignKey: 'dish_id',
+    as: 'dish'
+});
+
+Dish.belongsTo(Booking, {
+    foreignKey: 'dish_id',
+    as: 'booking'
+});
 
 module.exports = Booking;
 

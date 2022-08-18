@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
-const { getBookings, getBooking, createBooking } = require('../controllers/bookings');
+const { validateInputs, checkBookingTime } = require('../middlewares/');
+const { getBookings, getBooking, createBooking, deleteBooking, updateBooking } = require('../controllers/bookings');
 
 const routes = Router();
 
@@ -8,6 +9,22 @@ routes.get('/', getBookings);
 
 routes.get('/:id', getBooking);
 
-routes.post('/', createBooking);
+routes.post('/', [
+    checkBookingTime,
+    check('clients', 'Clients are required').not().isEmpty(),
+    check('time', 'Time is required').not().isEmpty(),
+    validateInputs
+], createBooking);
+
+routes.put('/:id', [
+    checkBookingTime,
+    check('clients', 'Clients are required').not().isEmpty(),
+    check('time', 'Time is required').not().isEmpty(),
+    validateInputs
+], updateBooking);
+
+routes.delete('/:id', [
+    validateInputs
+], deleteBooking);
 
 module.exports = routes;
