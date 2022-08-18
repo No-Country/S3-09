@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:reserbar/pages/home_page.dart';
+import 'package:reserbar/pages/home_screen.dart';
 import 'package:reserbar/pages/login_user.dart';
 import 'package:reserbar/ui/perfil_widgets/favoritos.perfil.dart';
 import 'package:reserbar/ui/perfil_widgets/mis_datos_perfil.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
           "/login": (context) => const LoginUser(),
           "/register": (context) => const RegisterScreen(),
           "/app": (context) => const HomePage(),
+          "/home": (context) => const Home(),
           // perfil
           "/app/perfil/misDatos": (context) => const MisDatosPerfil(),
           "/app/perfil/favoritos": (context) => const FavoritosPerfil(),
