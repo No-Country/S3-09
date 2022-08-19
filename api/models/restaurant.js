@@ -39,7 +39,7 @@ const Restaurant = sequelize.define('restaurant', {
 //Associations
 Restaurant.hasMany(Dish, {
     foreignKey: 'restaurant_id',
-    as: 'dish'
+    as: 'dishes'
 });
 
 Dish.belongsTo(Restaurant, {
