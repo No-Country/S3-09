@@ -2,6 +2,7 @@ const { Router } = require('express');
 const { check } = require('express-validator');
 const { validateInputs, validRestoID } = require('../middlewares/');
 const { getRestaurants, getRestaurantById, createRestaurant, updateRestaurant, deleteRestaurant } = require('../controllers/restaurants');
+const { checkTimeFormat } = require('../helpers/validateDB');
 
 const router = Router();
 
@@ -15,6 +16,10 @@ router.post('/', [
     check('name', 'Name is required').not().isEmpty(),
     check('address', 'Address is required').not().isEmpty(),
     check('description', 'Description is required').not().isEmpty(),
+    check('opening_hour', 'Opening hour is required').not().isEmpty(),
+    check('closing_hour', 'Closing hour is required').not().isEmpty(),
+    check('opening_hour').custom(checkTimeFormat),
+    check('closing_hour').custom(checkTimeFormat),
     validateInputs
 ], createRestaurant);
 
