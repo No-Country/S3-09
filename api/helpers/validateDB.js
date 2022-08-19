@@ -57,8 +57,36 @@ const checkCardDate = (expires) => {
     return true
 }
 
+//Check restaurant's hour
+const checkTimeFormat = (hour) => {
+    //Check if restaurant's hour exists
+    if (!hour) {
+        throw new Error('Hours is required');
+    }
+
+    //Check if restaurant's hour is valid
+    if (hour.length !== 5 || !hour.includes(':')) {
+        throw new Error('invalid hours - valid format: hh:mm');
+    }
+
+    const hourArr = hour.split(':');
+    const [HH, MM] = hourArr;
+
+    //Check if restaurant's hour is valid hour
+    if (HH > 23 || HH < 0) {
+        throw new Error('invalid hours - valid range: 0-23');
+    }
+    //Check if restaurant's hour is valid minutes
+    if (MM > 59 || MM < 0) {
+        throw new Error('invalid minutes - valid range: 0-59');
+    }
+
+    return true
+}
+
 module.exports = {
     existEmail,
     existUsername,
-    checkCardDate
+    checkCardDate,
+    checkTimeFormat
 }
