@@ -4,7 +4,6 @@ const validJWT = require('../middlewares/validToken');
 const { validUserID } = require('../middlewares/validateID');
 const { validRestoID } = require('../middlewares/validResto');
 const { validCardID } = require('../middlewares/validCard');
-const { checkBookingTime } = require('../middlewares/validBooking');
 
 module.exports = {
     validateInputs,
@@ -12,5 +11,4 @@ module.exports = {
     validUserID,
     validRestoID,
     validCardID,
-    checkBookingTime
 }
