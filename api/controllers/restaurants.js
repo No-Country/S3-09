@@ -32,7 +32,7 @@ const getRestaurantById = async (req, res) => {
 
 const createRestaurant = async (req, res) => {
 
-    const { name, address, description, opening_hour, closing_hour } = req.body;
+    const { name, address, description, opening_hour, closing_hour, price_range } = req.body;
     const hours = `${opening_hour}hs - ${closing_hour}hs`;
 
     const restaurant = new Restaurant({
@@ -40,6 +40,7 @@ const createRestaurant = async (req, res) => {
         address,
         description,
         hours,
+        price_range
     });
 
     await restaurant.save();
