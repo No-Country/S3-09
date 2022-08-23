@@ -1,9 +1,7 @@
 const Booking = require('../models/booking');
 
 const getBookings = async (req, res) => {
-    const bookings = await Booking.findAll({
-        include: ['calendar'],
-    });
+    const bookings = await Booking.findAll();
     res.json(bookings);
 }
 
