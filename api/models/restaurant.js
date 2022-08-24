@@ -12,24 +12,32 @@ const Restaurant = sequelize.define('restaurant', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    hours: {
-        type: DataTypes.STRING,
+    opening_hour: {
+        type: DataTypes.TIME,
+        defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+        allowNull: false
+    },
+    closing_hour: {
+        type: DataTypes.TIME,
+        defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+        allowNull: false
     },
     description: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    price_range: {
-        type: DataTypes.STRING,
+    highest_price: {
+        type: DataTypes.FLOAT,
+        allowNull: false
+    },
+    lowest_price: {
+        type: DataTypes.FLOAT,
+        allowNull: false
     },
     img: {
         type: DataTypes.STRING,
         defaultValue: 'no-img.jpg'
     },
-    is_favorite: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false
-    }
 },
     {
         timestamps: false
@@ -47,8 +55,5 @@ Dish.belongsTo(Restaurant, {
     as: 'restaurant'
 });
 
-
-Restaurant.hasMany(Booking, { foreignKey: 'restaurant_id', as: 'booking' });
-Booking.belongsTo(Restaurant, { foreignKey: 'restaurant_id', as: 'restaurant' });
 
 module.exports = Restaurant;
