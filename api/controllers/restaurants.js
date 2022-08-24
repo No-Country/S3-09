@@ -1,3 +1,4 @@
+const { checkTimeFormat } = require('../helpers/validateDB');
 const Restaurant = require('../models/restaurant');
 
 const getRestaurants = async (req, res) => {
@@ -32,16 +33,28 @@ const getRestaurantById = async (req, res) => {
 
 const createRestaurant = async (req, res) => {
 
-    const { name, address, description, opening_hour, closing_hour, price_range } = req.body;
-    const hours = `${opening_hour}hs - ${closing_hour}hs`;
+    const { name, address, description, opening_hour, closing_hour, lowest_price, highest_price, img } = req.body;
+    const newimg = img
 
-    const restaurant = new Restaurant({
+    if (lowest_price > highest_price) {
+        res.status(400).json({
+            msg: 'highest_price is less than lowest_price'
+        })
+    }
+
+
+    const data = {
         name,
         address,
         description,
-        hours,
-        price_range
-    });
+        opening_hour,
+        closing_hour,
+        lowest_price,
+        highest_price,
+        img: newimg || 'https://res.cloudinary.com/jonmenez/image/upload/v1661365062/Diiner/restaurant-flat-illustration_23-2147538098_tbkcme.jpg'
+    };
+
+    const restaurant = new Restaurant(data)
 
     await restaurant.save();
 
@@ -54,15 +67,38 @@ const createRestaurant = async (req, res) => {
 const updateRestaurant = async (req, res) => {
 
     const { id } = req.params;
-    const { name, address, description } = req.body;
+    const { name, address, description, opening_hour, closing_hour, lowest_price, highest_price, img } = req.body;
+
+    if (opening_hour || closing_hour) {
+        // checkTimeFormat(opening_hour)
+        console.log(checkTimeFormat(opening_hour))
+        // checkTimeFormat(closing_hour)
+    }
+
+    if (lowest_price > highest_price) {
+        res.status(400).json({
+            msg: 'highest_price is less than lowest_price'
+        })
+    }
 
     try {
         const restaurant = await Restaurant.findByPk(id);
+
+        let newImg = restaurant.img
+
+        if (newImg === restaurant.img) {
+            newImg = img
+        }
 
         await restaurant.update({
             name,
             address,
             description,
+            opening_hour,
+            closing_hour,
+            lowest_price,
+            highest_price,
+            img: newImg
         });
 
         res.status(201).json({
