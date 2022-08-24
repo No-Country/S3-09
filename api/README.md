@@ -121,11 +121,11 @@
 | `name`      | `body` | **Required**. nombre del restaurante |
 | `address`      | `body` | **Required**. dirección del restaurante |
 | `description`      | `body` | **Required**. descripción del restaurante |
-| `price_range`      | `body` | **Required**. Rango de precios del menu |
 | `lowest_price`      | `body` | **Required**. Menor precio del menu |
 | `highest_price`      | `body` | **Required**. Mayor precio del menu |
 | `opening_hour`      | `body` | **Required**. hora de apertura |
 | `closing_hour`      | `body` | **Required**. hora de cierre |
+| `img`      | `body` | **Optional**. Imagen del restaurante |
 
 
 #### Actualizar restaurante
@@ -143,6 +143,8 @@
 | `highest_price`      | `body` | **Required**. Mayor precio del menu |
 | `opening_hour`      | `body` | **Required**. hora de apertura |
 | `closing_hour`      | `body` | **Required**. hora de cierre |
+| `img`      | `body` | **Optional**. Imagen del restaurante |
+
 
 #### Borrar un restaurante
 ```http
@@ -179,9 +181,11 @@
 
 | Parametro | Ubicación     | Descripción                       |
 | :-------- | :------- | :-------------------------------- |
+| `x-token`      | `header` | **Required**. Token del usuario |
 | `clients`      | `body` | **Required**. numero de clientes |
 | `time`      | `body` | **Required**. horario de la reserva |
 | `date`      | `body` | **Required**. fecha de la reserva |
+| `restaurant_id`| `body` | **Required**. Id del restaurante |
 
 #### Actualizar reserva
 ```http
