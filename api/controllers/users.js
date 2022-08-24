@@ -45,6 +45,7 @@ const getInfoByUserId = async (req, res) => {
     switch (userInfo) {
         case 'bookings':
             const bookings = await user.getBookings();
+
             (bookings.length === 0)
                 ? res.status(400).json({
                     msg: 'You have not made any reservation yet',
@@ -118,7 +119,6 @@ const updateUser = async (req, res) => {
     try {
         const user = await User.findByPk(id);
 
-        user.addBooking(booking);
         await user.update({
             name,
             email,
