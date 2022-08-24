@@ -20,23 +20,18 @@ const Booking = sequelize.define('booking', {
     },
     total_pay: {
         type: DataTypes.FLOAT,
-        allowNull: true
-    }
+        allowNull: true,
+        defaultValue: 1000
+    },
+    restaurant_name: DataTypes.STRING,
+    restaurant_img: DataTypes.STRING,
+    restaurant_address: DataTypes.STRING,
 },
     {
         timestamps: false
     }
 )
 
-Booking.hasMany(Dish, {
-    foreignKey: 'dish_id',
-    as: 'dish'
-});
-
-Dish.belongsTo(Booking, {
-    foreignKey: 'dish_id',
-    as: 'booking'
-});
 
 module.exports = Booking;
 
