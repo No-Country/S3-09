@@ -6,14 +6,6 @@ const Dish = sequelize.define('dish', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    description: {
-        type: DataTypes.TEXT,
-        allowNull: false
-    },
-    price: {
-        type: DataTypes.FLOAT,
-        allowNull: false
-    },
     img: {
         type: DataTypes.STRING,
         allowNull: true
