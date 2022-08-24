@@ -69,12 +69,6 @@ const updateRestaurant = async (req, res) => {
     const { id } = req.params;
     const { name, address, description, opening_hour, closing_hour, lowest_price, highest_price, img } = req.body;
 
-    if (opening_hour || closing_hour) {
-        // checkTimeFormat(opening_hour)
-        console.log(checkTimeFormat(opening_hour))
-        // checkTimeFormat(closing_hour)
-    }
-
     if (lowest_price > highest_price) {
         res.status(400).json({
             msg: 'highest_price is less than lowest_price'
