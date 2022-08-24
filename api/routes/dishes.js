@@ -7,5 +7,6 @@ router.get('/', getDishes)
 
 router.post('/', createDish)
 
+router.put('/:id', createDish)
 
 module.exports = router;
