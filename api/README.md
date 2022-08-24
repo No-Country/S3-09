@@ -151,9 +151,56 @@
   DEL /api/v1/restaurants/${id}
 ```
 
+### Platillos
+
+#### Obtener todos los platillos
+
+```http
+  GET /api/v1/dishes
+```
+#### 
+
+#### Obtener un platillo
+```http
+  GET /api/v1/dishes/${id}
+```
+
 | Parametro | Ubicación     | Descripción                       |
 | :-------- | :------- | :-------------------------------- |
-| `id`      | `query` | **Required**. Id del restaurante |
+| `id`      | `query` | **Required**. Id del platillo |
+
+
+#### Crear nuevo restaurante
+```http
+  POST /api/v1/dishes
+```
+
+| Parametro | Ubicación     | Descripción                       |
+| :-------- | :------- | :-------------------------------- |
+| `name`      | `body` | **Required**. nombre del platillo |
+| `address`      | `body` | **Optional**. Imagen del platillo |
+
+
+
+#### Actualizar platillo
+```http
+  PUT /api/v1/dishes/${Id}
+```
+
+| Parametro | Ubicación     | Descripción                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `query` | **Required**. Id del platillo |
+| `name`      | `body` | **Required**. nombre del platillo |
+| `address`      | `body` | **Optional**. Imagen del platillo |
+
+
+#### Borrar un platillo
+```http
+  DEL /api/v1/dishes/${id}
+```
+| Parametro | Ubicación     | Descripción                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `query` | **Required**. Id del platillo |
 
 ### Reservas
 
