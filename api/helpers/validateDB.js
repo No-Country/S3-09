@@ -59,10 +59,6 @@ const checkCardDate = (expires) => {
 
 //Check restaurant's hour
 const checkTimeFormat = (hour) => {
-    //Check if restaurant's hour exists
-    if (!hour) {
-        throw new Error('Hours is required');
-    }
 
     //Check if restaurant's hour is valid
     if (hour.length !== 5 || !hour.includes(':')) {
@@ -81,6 +77,16 @@ const checkTimeFormat = (hour) => {
         throw new Error('invalid minutes - valid range: 0-59');
     }
 
+    return HH + ':' + MM
+}
+
+//Check restaurant price range
+const priceFotmat = (price) => {
+
+    if (isNaN(price)) {
+        throw new Error('Price must be a number or float');
+    }
+
     return true
 }
 
@@ -88,5 +94,6 @@ module.exports = {
     existEmail,
     existUsername,
     checkCardDate,
-    checkTimeFormat
+    checkTimeFormat,
+    priceFotmat
 }
