@@ -1,3 +1,4 @@
+const { Restaurant } = require('../models');
 const Booking = require('../models/booking');
 
 const getBookings = async (req, res) => {
@@ -12,22 +13,45 @@ const getBooking = async (req, res) => {
         }
     });
     res.json({
-        msg: 'Booking retrieved',
         booking
     });
 }
 
 const createBooking = async (req, res) => {
-    const { clients, date, time } = req.body;
-    const booking = await Booking.create({
-        clients,
-        date,
-        time
-    });
-    res.json({
-        msg: 'Booking created',
-        booking
-    });
+    const user_id = req.userId
+    const { clients, date, time, restaurant_id } = req.body;
+
+    const restaurant = await Restaurant.findByPk(restaurant_id)
+
+    const restaurant_name = restaurant.name
+    const restaurant_img = restaurant.img
+    const restaurant_address = restaurant.address
+
+    try {
+
+        const booking = await Booking.create({
+            clients,
+            date,
+            time,
+            user_id,
+            restaurant_id,
+            restaurant_name,
+            restaurant_img,
+            restaurant_address
+
+        });
+
+        res.json({
+            msg: 'Booking created',
+            booking
+        });
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            msg: error
+        })
+    }
+
 }
 
 const updateBooking = async (req, res) => {
