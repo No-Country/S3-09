@@ -3,6 +3,7 @@ const User = require('../models/user');
 const { generateToken } = require('../helpers/generateToken');
 const { googleVerufy } = require('../helpers/validateGoogle');
 
+
 const login = async (req, res) => {
 
     const { email, password } = req.body;
