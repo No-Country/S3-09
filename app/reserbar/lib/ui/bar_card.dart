@@ -3,71 +3,66 @@ import 'package:flutter/material.dart';
 class BarCard extends StatelessWidget {
   const BarCard({
     Key? key,
+    required this.id,
     required this.thumbnail,
     required this.title,
     required this.direction,
     required this.hour,
-    required this.points,
     required this.favorite,
   }) : super(key: key);
+  final int id;
   final String thumbnail;
   final String title;
   final String direction;
   final String hour;
-  final String points;
-  final String favorite;
+  final bool favorite;
 
   @override
   Widget build(BuildContext context) {
+
     return GestureDetector(
       onTap: () => Navigator.pushNamed(context, '/home', arguments: title),
-      child: Card(
-            semanticContainer: true,
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            elevation: 10.0,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
+      child: Container(
+        width:350,
+        margin: const EdgeInsets.only(left: 10, right: 10, top: 10),
+        child: Card(
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        elevation: 10.0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        child: Container(
+          height: 200.0,
+          alignment: Alignment.bottomCenter,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: NetworkImage(thumbnail),
+              fit: BoxFit.cover,
             ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-                  _barCardTopImage(),
-                ]),
-                Container(
-                  padding: const EdgeInsets.all(10.0),
-                  color: const Color.fromRGBO(20, 57, 129, 0.9),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Expanded(
-                        flex: 8,
-                        child: _barCardData(),
-                      ),
-                      _barCardFavourite(),
-                    ],
-                  ),
+          ),
+          child: Container(
+                height: 85.0,
+                padding: const EdgeInsets.all(10.0),
+                color: const Color.fromRGBO(20, 57, 129, 0.9),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(
+                      flex: 7,
+                      child: _barCardData(),
+                    ),
+                    _barCardFavourite(),
+                  ],
                 ),
-              ],
-            )),
-    );
+              ),
+            
+        )
+      )
+      )
+    );    
+    
   }
 
-  Widget _barCardTopImage() {
-    return Expanded(
-      flex: 6,
-      child: FadeInImage.assetNetwork(
-        placeholderCacheWidth: 10,
-        placeholderCacheHeight: 10,
-        placeholder: 'assets/loading.gif',
-        image: thumbnail,
-        fit: BoxFit.fitWidth,
-        height: 100,
-        alignment: Alignment.center,
-        fadeInDuration: const Duration(milliseconds: 200),
-      ),
-    );
-  }
 
   Widget _barCardData() {
     return Padding(
@@ -79,19 +74,19 @@ class BarCard extends StatelessWidget {
             title,
             style: const TextStyle(
               fontWeight: FontWeight.w500,
-              fontSize: 14.0,
+              fontSize: 18.0,
               color: Colors.white,
             ),
           ),
           const Padding(padding: EdgeInsets.symmetric(vertical: 2.0)),
           Text(
             direction,
-            style: const TextStyle(fontSize: 10.0, color: Colors.white),
+            style: const TextStyle(fontSize: 16.0, color: Colors.white),
           ),
           const Padding(padding: EdgeInsets.symmetric(vertical: 1.0)),
           Text(
             hour,
-            style: const TextStyle(fontSize: 10.0, color: Colors.white),
+            style: const TextStyle(fontSize: 16.0, color: Colors.white),
           ),
         ],
       ),
@@ -99,29 +94,18 @@ class BarCard extends StatelessWidget {
   }
 
   Widget _barCardFavourite() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 8.0),
-      child: Card(
-        color: const Color.fromRGBO(217, 217, 217, 1),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 1.0),
-          child: Row(
-            children: [ 
-              favorite=='true' ? const Icon(Icons.favorite, color: Color.fromRGBO(233, 33, 189, 1), size: 25.0,) : const Icon(Icons.favorite_border, color: Color.fromRGBO(233, 33, 189, 1), size: 20.0,),
-              Padding(
-                padding: const EdgeInsets.all(3.0),
-                child: Text(points,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                  )),
-            ),
-          ]),
-        ),
-      ),
+    return   Padding(
+          padding: const EdgeInsets.all(20.0),
+          child:  GestureDetector(
+            onTap: () => { _toggleFavorite(id) },
+            child: favorite ? 
+              const Icon(Icons.favorite, color: Color.fromRGBO(233, 33, 189, 1), size: 25.0,) : 
+              const Icon(Icons.favorite_border, color: Colors.white, size: 25.0,)                    
+          ) 
     );
-  }
-            
+  } 
+
+  void _toggleFavorite(int id) {
+    //
+  }           
 }
