@@ -1,0 +1,56 @@
+@import "../../styles/_providerColors.scss"; // Global colors.
+@import "../../styles/providerFontSize"; // Global font size.
+
+.inputContent {
+    width: 300px;
+ 
+    &__label {
+        font-size: $fontSize-18;
+        color: $color-primary;
+    }
+
+    
+    &__boxInput {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &__icons {
+            display: flex;
+            position: absolute;
+            align-items: center;
+            justify-content: space-between;
+            width: 280px;
+            padding-left: 10px;
+            
+            & svg {
+                font-size: $fontSize-24;
+                color: $color-primary;
+            }
+        }
+        
+        &__box {
+            z-index: 2;
+            background-color: transparent;
+            border: 2px solid $color-primary;
+            border-radius: 10px;
+            height: 30px;
+            width: 300px;
+            padding-left: 40px;
+            padding-right: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+    }
+
+    &__errorMessage {
+        text-align: end;
+        width: 300px;
+        color: $color-errors;
+        font-size: $fontSize-10;
+        transform: translateY(-10px);
+        position: absolute;
+    }
+}

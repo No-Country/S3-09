@@ -1,0 +1,30 @@
+@import "../../styles/_providerColors.scss"; // Global colors.
+@import "../../styles/providerFontSize"; // Global font size.
+
+.iconReserbar {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    
+    &__circle {
+        background-color: $color-primary;
+        border-radius: 100%;
+        height: 50px;
+        width: 50px;
+        color: $color-white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & svg {
+            font-size: $fontSize-24;
+        }
+    }
+
+    &__title {
+        color: $color-black;
+        letter-spacing: 1px;
+    }
+}
