@@ -3,9 +3,7 @@ import React from "react";
 import ProviderRoutes from "./routes/routes";
 
 const App = () => {
-    return (
-        <ProviderRoutes />
-    ) 
+    return <ProviderRoutes />;
 };
 
 export default App;

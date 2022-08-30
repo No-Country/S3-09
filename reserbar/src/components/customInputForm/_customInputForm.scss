@@ -3,13 +3,12 @@
 
 .inputContent {
     width: 300px;
- 
+
     &__label {
         font-size: $fontSize-18;
         color: $color-primary;
     }
 
-    
     &__boxInput {
         display: flex;
         align-items: center;
@@ -22,13 +21,13 @@
             justify-content: space-between;
             width: 280px;
             padding-left: 10px;
-            
+
             & svg {
                 font-size: $fontSize-24;
                 color: $color-primary;
             }
         }
-        
+
         &__box {
             z-index: 2;
             background-color: transparent;
@@ -41,7 +40,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            
         }
     }
 

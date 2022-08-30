@@ -1,7 +1,9 @@
 # Views 🎡
 
-## Register 
+## Register
+
 -   file
 
 ## Sing In
+
 -   file

@@ -1,5 +1,3 @@
 # Redux 💡
 
-## Only source of truth. 
-
-
+## Only source of truth.

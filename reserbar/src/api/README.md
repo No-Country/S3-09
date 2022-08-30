@@ -1,9 +1,11 @@
 # Api calls 🚀
 
-## Get 
+## Get
+
 -   file
 -   file
 
 ## Post
+
 -   file
 -   file
