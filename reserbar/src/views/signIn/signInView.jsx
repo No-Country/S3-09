@@ -6,15 +6,16 @@ import { MdEmail, MdOutlineVpnKey } from "react-icons/md";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import CustomSubmitInputForm from "../../components/customSubmitInputForm/customSubmitInputForm";
 import { Link } from "react-router-dom";
-import GoogleButton from 'react-google-button'
+import GoogleButton from "react-google-button";
 import { setVisiblePasswordAction } from "../../redux/actions/setVisiblePasswordAction";
 import { postSignInAction } from "../../redux/actions/postSignInAction";
 
 const SignInView = () => {
+    const dispatch = useDispatch();
 
-    const dispatch = useDispatch()
-
-    const visiblePassword = useSelector(store => store.setVisiblePasswordReducer) 
+    const visiblePassword = useSelector(
+        (store) => store.setVisiblePasswordReducer
+    );
 
     // Logic form and validation.
     const { handleChange, values, errors, handleSubmit } = useFormik({
@@ -32,17 +33,19 @@ const SignInView = () => {
                 .min(6, "Should be 6 chars minimum."),
         }),
         onSubmit: (values) => {
-            dispatch(postSignInAction({
-                email: values.email,
-                password: values.password
-            }))
+            dispatch(
+                postSignInAction({
+                    email: values.email,
+                    password: values.password,
+                })
+            );
         },
     });
 
     // Handle visible text
     const handleVisiblePassword = () => {
-        dispatch(setVisiblePasswordAction())
-    }
+        dispatch(setVisiblePasswordAction());
+    };
     // Info inputs.
     const customInputMap = [
         {
@@ -64,16 +67,19 @@ const SignInView = () => {
             name: "password",
             value: values.password,
             leftIcon: <MdOutlineVpnKey />,
-            rightIcon: visiblePassword ? <AiOutlineEye onClick={handleVisiblePassword} /> : <AiOutlineEyeInvisible onClick={handleVisiblePassword} />,
+            rightIcon: visiblePassword ? (
+                <AiOutlineEye onClick={handleVisiblePassword} />
+            ) : (
+                <AiOutlineEyeInvisible onClick={handleVisiblePassword} />
+            ),
             textError: errors.password ? errors.password : null,
         },
     ];
 
-  
     // Handle google button
     const handleClickGoogleSignIn = () => {
-        console.log("CONNECT WITH GOOGLE")
-    } 
+        console.log("CONNECT WITH GOOGLE");
+    };
 
     return (
         <section className="signIn">
@@ -94,14 +100,17 @@ const SignInView = () => {
                         />
                     );
                 })}
-                <CustomSubmitInputForm text="Iniciar sesión"/>
+                <CustomSubmitInputForm text="Iniciar sesión" />
             </form>
             <div className="signIn__register">
-                <p>¿No tenes cuenta? <Link to="/login/register"> Registrate </Link> </p>
+                <p>
+                    ¿No tenes cuenta?{" "}
+                    <Link to="/login/register"> Registrate </Link>{" "}
+                </p>
             </div>
             <div className="signIn__google">
                 <p>Iniciar sesión con redes sociales</p>
-                <GoogleButton onClick={handleClickGoogleSignIn}/>
+                <GoogleButton onClick={handleClickGoogleSignIn} />
             </div>
         </section>
     );

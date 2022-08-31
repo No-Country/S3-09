@@ -1,5 +1,4 @@
 .signIn {
-    
     &__form {
         display: flex;
         flex-direction: column;
@@ -9,9 +8,9 @@
     &__register {
         text-align: center;
         font-size: $fontSize-14;
-        
-        & a{
-            color: $color-primary; 
+
+        & a {
+            color: $color-primary;
             text-decoration: none;
         }
     }

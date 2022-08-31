@@ -1,14 +1,13 @@
-import { SET_VISIBLE_PASSWORD } from "../types"
+import { SET_VISIBLE_PASSWORD } from "../types";
 
-const initialState = false
+const initialState = false;
 
 export const setVisiblePasswordReducer = (state = initialState, { type }) => {
     switch (type) {
+        case SET_VISIBLE_PASSWORD:
+            return !state;
 
-    case SET_VISIBLE_PASSWORD:
-        return !state
-
-    default:
-        return state
+        default:
+            return state;
     }
-}
+};

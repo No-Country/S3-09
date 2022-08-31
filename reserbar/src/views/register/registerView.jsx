@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import CustomInputForm from "../../components/customInputForm/customInputForm";
 import { MdEmail, MdOutlineVpnKey } from "react-icons/md";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { FaUser } from 'react-icons/fa'
+import { FaUser } from "react-icons/fa";
 import CustomSubmitInputForm from "../../components/customSubmitInputForm/customSubmitInputForm";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -12,12 +12,13 @@ import { setVisiblePasswordAction } from "../../redux/actions/setVisiblePassword
 import { postRegisterAction } from "../../redux/actions/postRegisterAction";
 
 const RegisterView = () => {
-    
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     let navigate = useNavigate();
 
-    const visiblePassword = useSelector(store => store.setVisiblePasswordReducer)
+    const visiblePassword = useSelector(
+        (store) => store.setVisiblePasswordReducer
+    );
     // const loadingRegisterPost = useSelector(store => store.postRegisterReducer.loading)
 
     // Logic form and validation.
@@ -27,15 +28,11 @@ const RegisterView = () => {
             userName: "",
             email: "",
             password: "",
-            confirmPassword: ""
+            confirmPassword: "",
         },
         validationSchema: Yup.object().shape({
-            name: Yup.string()
-                .max(20)
-                .required("Name is required"),
-            userName: Yup.string()
-                .max(10)
-                .required("UserName is required"),
+            name: Yup.string().max(20).required("Name is required"),
+            userName: Yup.string().max(10).required("UserName is required"),
             email: Yup.string()
                 .email("Must be a valid email")
                 .max(20)
@@ -48,20 +45,22 @@ const RegisterView = () => {
                 .oneOf([Yup.ref("password"), null], "Passwords must match"),
         }),
         onSubmit: (values) => {
-            dispatch(postRegisterAction({
-                name: values.name,
-                userName: values.userName,
-                email: values.email,
-                password: values.password
-            })),
-            navigate("/login/signin", { replace: true });
+            dispatch(
+                postRegisterAction({
+                    name: values.name,
+                    userName: values.userName,
+                    email: values.email,
+                    password: values.password,
+                })
+            ),
+                navigate("/login/signin", { replace: true });
         },
     });
 
     // Handle visible text
     const handleVisiblePassword = () => {
-        dispatch(setVisiblePasswordAction())
-    }
+        dispatch(setVisiblePasswordAction());
+    };
     // Info inputs.
     const customInputMap = [
         {
@@ -105,7 +104,11 @@ const RegisterView = () => {
             name: "password",
             value: values.password,
             leftIcon: <MdOutlineVpnKey />,
-            rightIcon: visiblePassword ? <AiOutlineEye onClick={handleVisiblePassword} /> : <AiOutlineEyeInvisible onClick={handleVisiblePassword} />,
+            rightIcon: visiblePassword ? (
+                <AiOutlineEye onClick={handleVisiblePassword} />
+            ) : (
+                <AiOutlineEyeInvisible onClick={handleVisiblePassword} />
+            ),
             textError: errors.password ? errors.password : null,
         },
         {
@@ -116,12 +119,15 @@ const RegisterView = () => {
             name: "confirmPassword",
             value: values.confirmPassword,
             leftIcon: <MdOutlineVpnKey />,
-            rightIcon: visiblePassword ? <AiOutlineEye onClick={handleVisiblePassword} /> : <AiOutlineEyeInvisible onClick={handleVisiblePassword} />,
+            rightIcon: visiblePassword ? (
+                <AiOutlineEye onClick={handleVisiblePassword} />
+            ) : (
+                <AiOutlineEyeInvisible onClick={handleVisiblePassword} />
+            ),
             textError: errors.confirmPassword ? errors.confirmPassword : null,
         },
     ];
 
-  
     return (
         <section className="signIn">
             <form onSubmit={handleSubmit} className="signIn__form">
@@ -141,10 +147,12 @@ const RegisterView = () => {
                         />
                     );
                 })}
-                <CustomSubmitInputForm text="Registrarse"/>
+                <CustomSubmitInputForm text="Registrarse" />
             </form>
             <div className="signIn__register">
-                <p>¿Ya tenes cuenta? <Link to="/login/signin"> Ingresa </Link> </p>
+                <p>
+                    ¿Ya tenes cuenta? <Link to="/login/signin"> Ingresa </Link>{" "}
+                </p>
             </div>
         </section>
     );

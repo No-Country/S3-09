@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
-const CustomSubmitInputForm = ({text}) => {
-  return (
-    <button className="submitButton" type='submit'>{text}</button>
-  )
-}
+const CustomSubmitInputForm = ({ text }) => {
+    return (
+        <button className="submitButton" type="submit">
+            {text}
+        </button>
+    );
+};
 
-export default CustomSubmitInputForm
+export default CustomSubmitInputForm;

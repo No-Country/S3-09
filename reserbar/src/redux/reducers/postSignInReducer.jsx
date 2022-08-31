@@ -1,19 +1,23 @@
-import { POST_SINGIN_SUCCES, POST_SINGIN_ERROR } from "../types"
+import { POST_SINGIN_SUCCES, POST_SINGIN_ERROR } from "../types";
 
-const initialState = {}
+const initialState = {};
 
-export const postSignInReducer = (state = initialState, { type, userData, error }) => {
-  switch (type) {
-
+export const postSignInReducer = (
+    state = initialState,
+    { type, userData, error }
+) => {
+    switch (type) {
         case POST_SINGIN_SUCCES:
+            console.log(JSON.stringify(userData.token));
+            localStorage.setItem("token", JSON.stringify(userData.token));
             return {
-              state: userData
+                state: userData,
             };
 
         case POST_SINGIN_ERROR:
-            return console.log("SIGN IN POST ERROR", error)
+            return console.log("SIGN IN POST ERROR", error);
 
-  default:
-    return state
-  }
-}
+        default:
+            return state;
+    }
+};
