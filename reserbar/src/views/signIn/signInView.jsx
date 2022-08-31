@@ -8,6 +8,7 @@ import CustomSubmitInputForm from "../../components/customSubmitInputForm/custom
 import { Link } from "react-router-dom";
 import GoogleButton from 'react-google-button'
 import { setVisiblePasswordAction } from "../../redux/actions/setVisiblePasswordAction";
+import { postSignInAction } from "../../redux/actions/postSignInAction";
 
 const SignInView = () => {
 
@@ -31,7 +32,10 @@ const SignInView = () => {
                 .min(6, "Should be 6 chars minimum."),
         }),
         onSubmit: (values) => {
-            console.log("SING IN", values);
+            dispatch(postSignInAction({
+                email: values.email,
+                password: values.password
+            }))
         },
     });
 

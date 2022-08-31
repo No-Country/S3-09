@@ -22,7 +22,8 @@
         "redux": "^4.2.0",
         "redux-devtools-extension": "^2.13.9",
         "sass": "^1.54.5",
-        "yup": "^0.32.11"
+        "yup": "^0.32.11",
+        "redux-thunk": "^2.3.0"
     },
     "devDependencies": {
         "@types/react": "^18.0.0",

@@ -1,6 +1,6 @@
 // Custom input usign for loginForm
 const CustomInputForm = ({
-    key,
+    index,
     type,
     name,
     onChange,
@@ -12,7 +12,7 @@ const CustomInputForm = ({
     rightIcon,
 }) => {
     return (
-        <div className="inputContent" key={key}>
+        <div className="inputContent" key={index}>
             <label htmlFor={name} className="inputContent__label">
                 {label}
             </label>
