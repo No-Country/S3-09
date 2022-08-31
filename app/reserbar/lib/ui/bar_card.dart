@@ -21,7 +21,17 @@ class BarCard extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return GestureDetector(
-      onTap: () => Navigator.pushNamed(context, '/home', arguments: title),
+      onTap: () => Navigator.pushNamed(
+        context, '/landing', 
+        arguments: {
+          "id": id, 
+          "thumbnail":thumbnail, 
+          "title": title, 
+          "direction": direction, 
+          "hour": hour, 
+          "favorite": favorite
+        }, 
+      ),
       child: Container(
         width:350,
         margin: const EdgeInsets.only(left: 10, right: 10, top: 10),

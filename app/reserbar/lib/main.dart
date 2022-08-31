@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:reserbar/pages/bar_landing_page.dart';
 import 'package:reserbar/pages/home_page.dart';
 import 'package:reserbar/pages/home_screen.dart';
 import 'package:reserbar/pages/login_user.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
           "/login": (context) => const LoginUser(),
           "/register": (context) => const RegisterScreen(),
           "/home": (context) => const HomePage(),
+          "/landing": (context) => BarLandingPage(),
           // perfil
           "/app/perfil/misDatos": (context) => const MisDatosPerfil(),
           "/app/perfil/favoritos": (context) => const FavoritosPerfil(),
