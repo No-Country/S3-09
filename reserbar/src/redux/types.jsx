@@ -1,1 +1,2 @@
-"hello";
+export const SET_VISIBLE_PASSWORD = "SET_VISIBLE_PASSWORD"
+export const POST_REGISTER = "POST_REGISTER"

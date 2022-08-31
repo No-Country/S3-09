@@ -5,7 +5,7 @@
     width: 300px;
 
     &__label {
-        font-size: $fontSize-18;
+        font-size: $fontSize-14;
         color: $color-primary;
     }
 
@@ -13,7 +13,8 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-
+        
+        
         &__icons {
             display: flex;
             position: absolute;
@@ -21,10 +22,15 @@
             justify-content: space-between;
             width: 280px;
             padding-left: 10px;
-
+            
+            & svg:nth-child(2) {
+                cursor: pointer;
+            }
+            
             & svg {
+                z-index: 3;
                 font-size: $fontSize-24;
-                color: $color-primary;
+                color: $color-primary;   
             }
         }
 

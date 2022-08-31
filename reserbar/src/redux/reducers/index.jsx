@@ -1,11 +1,9 @@
 import { combineReducers } from "redux";
-
-import { getCurrentLocationReducer } from "./getCurrentLocationReducer";
-import { getLocationForFormReducer } from "./getLocationForFormReducer";
-import { setDataFormReducer } from "./setDataFormReducer";
-import { showMapModalReducer } from "./showMapModalReducer";
+import { postRegisterReducer } from "./postRegisterReducer";
+import { setVisiblePasswordReducer } from "./setVisiblePasswordReducer";
 
 // Compile all reducers to pass to the store.
 export const rootReducers = combineReducers({
-    // Reducers here.
+    setVisiblePasswordReducer: setVisiblePasswordReducer, // change password to text or ****
+    postRegisterReducer: postRegisterReducer, // POST Register a user.
 });

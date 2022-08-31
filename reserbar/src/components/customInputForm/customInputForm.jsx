@@ -14,8 +14,7 @@ const CustomInputForm = ({
     return (
         <div className="inputContent" key={key}>
             <label htmlFor={name} className="inputContent__label">
-                {" "}
-                {label}{" "}
+                {label}
             </label>
             <div className="inputContent__boxInput">
                 <div className="inputContent__boxInput__icons">
@@ -23,7 +22,7 @@ const CustomInputForm = ({
                     {rightIcon}
                 </div>
                 <input
-                    className="inputContent__boxInput__box"
+                    className={"inputContent__boxInput__box"}
                     onChange={onChange}
                     value={value}
                     placeholder={placeholder}
