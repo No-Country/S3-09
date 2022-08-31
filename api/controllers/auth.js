@@ -1,7 +1,9 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/user');
+const jwt = require('jsonwebtoken');
 const { generateToken } = require('../helpers/generateToken');
 const { googleVerufy } = require('../helpers/validateGoogle');
+const emailer = require('../helpers/emailer')
 
 
 const login = async (req, res) => {
@@ -44,6 +46,7 @@ const login = async (req, res) => {
 }
 
 const googleSignIn = async (req, res) => {
+
     const { id_token } = req.headers;
 
     try {
@@ -94,7 +97,34 @@ const googleSignIn = async (req, res) => {
     }
 }
 
+const forgotPassword = async (req, res) => {
+    const { email } = req.body
+
+    const user = await User.findOne({
+        where: {
+            email
+        }
+    })
+
+    if (!user) {
+        res.status(404).json({
+            msg: 'user not found'
+        })
+    }
+
+    const token = await generateToken(user.email)
+
+    const sendEmail = `http://localhost:5000/${token}`
+
+    await emailer.forgotPassword(user, sendEmail)
+    res.json({
+        token
+    })
+
+}
+
 module.exports = {
     login,
-    googleSignIn
+    googleSignIn,
+    forgotPassword
 }
