@@ -11,14 +11,58 @@
 
 // Components.
 @import "./components/logoReserbar/logoReserbar"; // Logo reserbar.
-@import "./components//customInputForm/customInputForm"; // Custom input for forms.
+@import "./components/cardRestaurant/cardRestaurant"; // Custom input for forms.
+@import "./components/customInputForm/customInputForm"; // Custom input for forms.
 @import "./components/customSubmitInputForm/customSubmitInputForm"; // Custom input submit for forms.
+@import "./components/drawerFooterNavLinks/drawerFooterNavLinks"; // Navigation.
 @import "./views/signIn/signInView"; // View Sign in.
 @import "./views/register/registerView"; // View Register.
 
 @import "./styles/providerColors"; // Provider colors.
 @import "./styles/providerFontSize"; // Provider Font size.
 
-body {
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--body-font);
+}
+
+body {
+    min-height: 1vh;
+    min-width: 320px;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+img {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: var(--black-color);
+    display: block;
+}
+
+input,
+textarea {
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: auto;
+    appearance: auto;
+    outline: none;
+}
+
+li {
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+    appearance: none;
 }
