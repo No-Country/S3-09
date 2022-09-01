@@ -1,0 +1,42 @@
+.toolBar {
+  display: flex;
+  //justify-content: center;
+}
+.inputContainer {
+  background-color: #f1f1f1 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 2rem;
+}
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 2rem;
+}
+.layout {
+  width: 'auto';
+ 
+}
+.paper {
+ height: 80px;
+}
+.stepper {
+}
+.buttons {
+  display: 'flex';
+}
+.button {
+  background-color: $color-primary !important;
+}
+.center{
+  align-items: center;
+  text-align: center;
+}
