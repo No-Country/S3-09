@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const HomeSubPage = () => {
-    return (
-        <div>HomeSubPage</div>
-    )
-}
+    return <div>HomeSubPage</div>;
+};
 
-export default HomeSubPage
+export default HomeSubPage;

@@ -11,10 +11,10 @@
 .navigateLinkActive {
     transform: scale(1.1);
     color: $color-primary;
-    
-    @media (max-width: 900px) { 
-        transform: translateY(10px); 
-    };
+
+    @media (max-width: 900px) {
+        transform: translateY(10px);
+    }
 
     & svg {
         min-height: $fontSize-32;
@@ -30,10 +30,9 @@
     transition: 1s;
     color: $color-lightGrey;
 
-    @media (max-width: 900px) { 
-        transform: translateY(10px); 
-    };
-
+    @media (max-width: 900px) {
+        transform: translateY(10px);
+    }
 
     & svg {
         min-height: $fontSize-32;
@@ -44,6 +43,4 @@
         font-size: $fontSize-14;
         transform: translateY(-10px);
     }
-
-    
 }

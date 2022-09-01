@@ -6,6 +6,9 @@
 @import "./pages/loginPage/loginPage"; // Login page content outlot register/signIN.
 @import "./pages/homePage/homePage"; // Home page conetent drawer and new routes.
 
+// SubPages
+@import "./pages/subPages/myIdSubPage/myIdSubPage"; // QR.
+
 // Components.
 @import "./components/logoReserbar/logoReserbar"; // Logo reserbar.
 @import "./components//customInputForm/customInputForm"; // Custom input for forms.
@@ -15,7 +18,6 @@
 // View.
 @import "./views/signIn/signInView"; // View Sign in.
 @import "./views/register/registerView"; // View Register.
-
 
 body {
     margin: 0;

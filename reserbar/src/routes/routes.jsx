@@ -17,16 +17,14 @@ const ProviderRoutes = () => {
             <Suspense fallback={<div>loading</div>}>
                 {userLogin ? (
                     <Routes>
-                        <Route path="/" element={<Homepage />} >
+                        <Route path="/" element={<Homepage />}>
                             <Route path="/home" element={<HomeSubPage />} />
                             <Route path="/search" element={<SearchSubPage />} />
                             <Route path="/qr" element={<MyIdSubPage />} />
                             <Route path="/perfil" element={<PerfilSubPage />} />
                             <Route
                                 path="/"
-                                element={
-                                    <Navigate to="/home" replace />
-                                }
+                                element={<Navigate to="/home" replace />}
                             />
                         </Route>
                         <Route
