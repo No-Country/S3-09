@@ -1,0 +1,43 @@
+.homePageContent {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+
+    @media (max-width: 900px) {
+        flex-direction: column-reverse;
+    }
+
+    &__drawer {
+        width: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        border-right: 3px double $color-lightGrey;
+        box-shadow: 10px 0px 10px $color-lightGrey;
+
+        @media (max-width: 900px) {
+            width: 100%;
+            height: 70px;
+            flex-direction: row;
+            box-shadow: none;
+            align-items: center;
+            border-right: none;
+            border-top: 3px double $color-lightGrey;
+        }
+    }
+
+    &__AppVisibleToUser {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        width: calc(100% - 100px);
+
+        @media (max-width: 900px) {
+            width: 100%;
+            height: calc(100vh - 70px);
+        }
+    }
+}

@@ -4,6 +4,10 @@ import Homepage from "../pages/homePage/homepage";
 import LoginPage from "../pages/loginPage/loginPage";
 import RegisterView from "../views/register/registerView";
 import SignInView from "../views/signIn/signInView";
+import HomeSubPage from "../pages/subPages/homeSubPage/homeSubPage";
+import SearchSubPage from "../pages/subPages/searchSubPage/searchSubPage";
+import MyIdSubPage from "../pages/subPages/myIdSubPage/myIdSubPage";
+import PerfilSubPage from "../pages/subPages/perfilSubPage/perfilSubPage";
 
 const ProviderRoutes = () => {
     const userLogin = localStorage.getItem("token");
@@ -13,7 +17,20 @@ const ProviderRoutes = () => {
             <Suspense fallback={<div>loading</div>}>
                 {userLogin ? (
                     <Routes>
-                        <Route path="/" element={<Homepage />} />
+                        <Route path="/" element={<Homepage />}>
+                            <Route path="/home" element={<HomeSubPage />} />
+                            <Route path="/search" element={<SearchSubPage />} />
+                            <Route path="/qr" element={<MyIdSubPage />} />
+                            <Route path="/perfil" element={<PerfilSubPage />} />
+                            <Route
+                                path="/"
+                                element={<Navigate to="/home" replace />}
+                            />
+                        </Route>
+                        <Route
+                            path="*"
+                            element={<Navigate to="/home" replace />}
+                        />
                     </Routes>
                 ) : (
                     <Routes>
