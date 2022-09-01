@@ -1,6 +1,6 @@
 import favoriteSvg from '@icons/favorite.svg'
 
-const cardRestaurant = () => {
+const CardRestaurant = () => {
   return (
     <div className='cardRestaurant'>
         <div className="cardRestaurant__img">
@@ -20,4 +20,4 @@ const cardRestaurant = () => {
   )
 }
 
-export default cardRestaurant
+export default CardRestaurant

@@ -1,0 +1,20 @@
+.searchRestaurants {
+    display: flex;
+    align-items: center;
+    color: $color-primary;
+    
+    & svg {
+        font-size: $fontSize-18;
+        padding-left: 5px;
+        position: absolute;
+        // transform: translateY(20px);
+    }
+    
+    & input {
+        border: 1px solid $color-primary;
+        height: 25px;
+        border-radius: 10px;
+        padding-left: 30px;
+        width: 100%;
+    }
+}

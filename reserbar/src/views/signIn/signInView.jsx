@@ -105,7 +105,7 @@ const SignInView = () => {
             </form>
             <div className="signIn__register">
                 <p>
-                    ¿No tenes cuenta?{" "}
+                    ¿No tenes cuenta?
                     <Link to="/login/register"> Registrate </Link>{" "}
                 </p>
             </div>

@@ -151,7 +151,7 @@ const RegisterView = () => {
             </form>
             <div className="signIn__register">
                 <p>
-                    ¿Ya tenes cuenta? <Link to="/login/signin"> Ingresa </Link>{" "}
+                    ¿Ya tenes cuenta? <Link to="/login/signin"> Ingresa </Link>
                 </p>
             </div>
         </section>
