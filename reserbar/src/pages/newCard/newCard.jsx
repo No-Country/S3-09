@@ -15,7 +15,9 @@ import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
 import { Container } from "@mui/system";
 import CustomSubmitInputForm from "../../components/customSubmitInputForm/customSubmitInputForm";
-import { newCardAction } from "../../redux/actions/addNewCard";
+import { addNewCardAction } from "../../redux/actions/addNewCardAction";
+import CustomInputForm from "../../components/customInputForm/customInputForm";
+import { addNewCardReducer } from "../../redux/reducers/addNewCardReducer";
 
 const NewCard = () => {
     const navigate = useNavigate();
@@ -34,15 +36,15 @@ const NewCard = () => {
         //         .required("Debe ingresar un nombre"),
             
         // }),
-        onSubmit: (values) => {
+        onSubmit: async (values) => {
             dispatch(
-                newCardAction({
+                addNewCardAction({
                     card_number: values.card_number,
                     card_name: values.card_name,
                     card_expires: values.card_expires,
                     card_cvv: values.card_cvv,
                 })
-            );
+                )
         },
     });
 
@@ -63,7 +65,7 @@ const NewCard = () => {
                 </Typography>
                 </Container>
             </Toolbar>
-                <Container>
+                <Container maxWidth={'80'}>
                 <Typography variant="subtitle1" color="inherit" align="center">
                     Completá los datos de la tarjeta de debito o crédito con la
                     que vas a pagar la reserva
@@ -74,54 +76,72 @@ const NewCard = () => {
                 <Card className="inputContainer" elevation={2}>
                     <Grid container spacing={3} justifyContent="center">
                         <Grid item xs={10} md={6}>
-                            <TextField
+                            {/* <TextField
                                 required
-                                id="cardName"
+                                id="card_name"
                                 label="Nombre de la tarjeta"
                                 fullWidth
                                 autoComplete="cc-name"
                                 variant="standard"
                                 name="card_name"
-                            />
+                                onChange={handleChange}
+                                value={values.card_name}
+                            /> */}
+                            <CustomInputForm
+                            key={0}
+                            onChange={handleChange}
+                            label="Nombre del titular de la tarjeta"
+                            name="card_name"
+                            value={values.card_name}
+                            type={"text"}
+                            placeholder={"Nombre de la tarjeta"}
+                            textError={errors.card_name}
+                        />
                         </Grid>
                         <Grid item xs={10} md={6}>
                             <TextField
                                 required
-                                id="cardNumber"
+                                id="card_number"
                                 label="Número de la tarjeta"
                                 fullWidth
                                 autoComplete="cc-number"
                                 variant="standard"
                                 name="card_number"
+                                onChange={handleChange}
+                                value={values.card_number}
                             />
                         </Grid>
                         <Grid item xs={10} md={6}>
                             <TextField
                                 required
-                                id="expDate"
+                                id="card_expires"
                                 label="Fecha de expiración"
                                 fullWidth
                                 autoComplete="cc-exp"
                                 variant="standard"
                                 name="card_expires"
+                                onChange={handleChange}
+                                value={values.card_expires}
                             />
                         </Grid>
                         <Grid item xs={10} md={6}>
                             <TextField
                                 required
-                                id="cvv"
+                                id="card_cvv"
                                 label="CVV"
                                 helperText="Últimos tres dígitos en la parte posterior de tu tarjeta"
                                 fullWidth
                                 autoComplete="cc-csc"
                                 variant="standard"
                                 name="card_cvv"
+                                onChange={handleChange}
+                                value={values.card_cvv}
                             />
                         </Grid>
                     </Grid>
                 </Card>
                 <Container className="buttonContainer" align="center">
-                    <Button variant="contained" className="button" type="submit" onClick={handleSubmit}>
+                    <Button variant="contained" className="button" type="submit">
                         Guardar Tarjeta
                     </Button>
                     <CustomSubmitInputForm text={"Guardar Tarjeta"} />
