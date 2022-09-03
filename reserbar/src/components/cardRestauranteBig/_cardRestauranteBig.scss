@@ -1,0 +1,12 @@
+.cardRestaurantContainer {
+    background-color: blue;
+    height: 200px;
+    width: 200px;
+
+    &__imgRestaurant {
+        position: absolute;
+        object-fit: cover;
+        height: 200px;
+        width: 200px;
+    }
+}

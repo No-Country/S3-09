@@ -1,8 +1,15 @@
 import React from "react";
-import NewCard from "../../newCard/newCard";
+import { Outlet } from "react-router-dom";
 
 const HomeSubPage = () => {
-    return <div> homepage</div>;
+    return (
+        <section className="homeViewContent">
+            <h1>Nueva reserva</h1>
+            <div>
+                <Outlet />
+            </div>
+        </section>
+    );
 };
 
 export default HomeSubPage;

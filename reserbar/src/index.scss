@@ -10,6 +10,7 @@
 @import "./pages/subPages/myIdSubPage/myIdSubPage"; // QR.
 @import "./pages/subPages/searchSubPage/searchSubPage"; // Explore restaurants.
 @import "./pages/subPages/perfilSubPage/perfilSubPage"; // Perfil page container.
+@import "./pages/subPages/homeSubPage/homeSubPage"; // home sub pages content.
 
 // Views
 @import "./views/signIn/signInView"; // View Sign in.
@@ -22,6 +23,8 @@
 @import "./views/perfilpage/paymentView/paymentView"; // Perfil payment view.
 @import "./views/perfilpage/userView/userView"; // Perfil user view.
 @import "./views/perfilpage/supportView/supoortView"; // Perfil suport view.
+@import "./views/homeSubPage/restaurantsView/restaurantsView"; // Restaurant view.
+@import "./views/homeSubPage/bookingsView/bookingsView"; // Bookings view
 
 // Components.
 @import "./components/logoReserbar/logoReserbar"; // Logo reserbar.
@@ -35,6 +38,7 @@
 @import "./components/avatarUser/avatarUser"; // Circle avatar user.
 @import "./components/userDataText/userDataText"; // Target with data abaut the user
 @import "./components/iconSocial/iconSocial"; // Social icon.
+@import "./components/cardRestauranteBig/cardRestauranteBig"; // Card restaurants.
 
 body {
     margin: 0;

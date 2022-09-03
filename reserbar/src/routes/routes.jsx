@@ -16,6 +16,9 @@ import PaymentView from "../views/perfilpage/paymentView/paymentView";
 import SupportView from "../views/perfilpage/supportView/supportView";
 import ActivesVIew from "../views/perfilpage/bookingsView/activesVIew/activesVIew";
 import HistoryVIew from "../views/perfilpage/bookingsView/historyVIew/historyVIew";
+import RestaurantsView from "../views/homeSubPage/restaurantsView/restaurantsView";
+import BookingsHomeView from "../views/homeSubPage/bookingsView/bookingsView";
+
 
 const ProviderRoutes = () => {
     const userLogin = localStorage.getItem("token");
@@ -26,7 +29,16 @@ const ProviderRoutes = () => {
                 {userLogin ? (
                     <Routes>
                         <Route path="/" element={<Homepage />}>
-                            <Route path="/home" element={<HomeSubPage />} />
+                            <Route path="/home" element={<HomeSubPage />} >
+                                <Route path="restaurants" element={<RestaurantsView />} />
+                                <Route path="bookings" element={<BookingsHomeView />} />    
+                                <Route
+                                    path="/home"
+                                    element={
+                                        <Navigate to="/home/restaurants" replace />
+                                    }
+                                />
+                            </Route>
                             <Route path="/search" element={<SearchSubPage />} />
                             <Route path="/qr" element={<MyIdSubPage />} />
                             <Route path="/perfil" element={<PerfilSubPage />}>
