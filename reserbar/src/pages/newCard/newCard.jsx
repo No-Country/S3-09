@@ -19,10 +19,10 @@ import CustomInputForm from "../../components/customInputForm/customInputForm";
 import { addNewCardReducer } from "../../redux/reducers/addNewCardReducer";
 
 const NewCard = () => {
-    const dateFormat = (date) => {
-        return /^(0[1-9]|1[0-2])\/([0-9]{2})$/g.test(date)
-    }
-    console.log(dateFormat("12/22"));
+    //   FUNCION PARA VALIDAD EL FORMATO DE LA FECHA
+    // const dateFormat = (date) => {
+    //     return /^(0[1-9]|1[0-2])\/([0-9]{2})$/g.test(date)
+    // }
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { handleChange, values, errors, handleSubmit } = useFormik({
@@ -47,8 +47,7 @@ const NewCard = () => {
             card_cvv: Yup.number()
                 .min(3, "Debe ingresar 3 digitos")
                 .max(3, "Debe ingresar 3 digitos")
-                .required("Debe ingresar un cvv"),
-                
+                .required("Debe ingresar un cvv"),                
         }),
         onSubmit: async (values) => {
             dispatch(
