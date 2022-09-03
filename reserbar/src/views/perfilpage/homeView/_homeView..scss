@@ -1,0 +1,32 @@
+.perfilView {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    @media (max-width: 900px) {
+        width: 100%;
+    }
+
+    &__buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    &__signOut {
+        color: $color-black;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        &:hover {
+            color: $color-primary;
+        }
+    }
+}

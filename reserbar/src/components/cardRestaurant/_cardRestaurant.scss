@@ -1,0 +1,32 @@
+@import "../../styles/_providerColors.scss"; // Global colors.
+@import "../../styles/providerFontSize"; // Global font size.
+
+.cardRestaurant {
+    position: relative;
+    border-radius: 8px;
+    width: calc(100% - 2rem);
+    max-width: 300px;
+    overflow: hidden;
+    aspect-ratio: 3 / 2;
+    margin: 1rem auto;
+    cursor: pointer;
+
+    &__text {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background-color: $color-primary;
+        background-color: rgb(20, 57, 129, 0.8);
+        // opacity: .8;
+    }
+
+    &__list {
+        color: #fff;
+        text-align: left;
+        line-height: 21px;
+    }
+}

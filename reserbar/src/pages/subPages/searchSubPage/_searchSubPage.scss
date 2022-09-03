@@ -1,0 +1,30 @@
+.explorerContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80%;
+    width: 80%;
+    gap: 10px;
+
+    &__search {
+        width: 50%;
+        min-width: 300px;
+    }
+
+    &__restaurants {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+        height: 80%;
+        width: 80%;
+        overflow-y: scroll;
+
+        @media (max-width: 1100px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width: 800px) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+}

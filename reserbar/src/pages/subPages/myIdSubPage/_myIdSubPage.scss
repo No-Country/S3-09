@@ -1,0 +1,62 @@
+.myId {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 80%;
+    text-align: center;
+
+    @media (max-width: 900px) {
+        font-size: $fontSize-10;
+    }
+
+    &__target {
+        // border: 2px solid $color-secondary;
+        box-shadow: 10px 10px 10px $color-black;
+        border-radius: 16px;
+        background: linear-gradient(
+            309.61deg,
+            #143981 12.21%,
+            rgba(20, 69, 129, 0.576274) 66.91%,
+            rgba(20, 57, 129, 0) 114.67%
+        );
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        height: 400px;
+        width: 300px;
+        color: $color-white;
+
+        & svg {
+            font-size: $fontSize-32;
+        }
+
+        & p {
+            width: 80%;
+            font-size: $fontSize-24;
+        }
+
+        @media (max-width: 900px) {
+            font-size: $fontSize-10;
+            height: 100%;
+            width: 200px;
+        }
+    }
+
+    &__description {
+        color: $color-primary;
+    }
+}
+
+.diinerTarget {
+    color: $color-primary;
+
+    &__user {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: $fontSize-24;
+    }
+}

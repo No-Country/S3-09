@@ -32,7 +32,7 @@ const SignInView = () => {
                 .required("No password provided.")
                 .min(6, "Should be 6 chars minimum."),
         }),
-        onSubmit: (values) => {
+        onSubmit: async (values) => {
             dispatch(
                 postSignInAction({
                     email: values.email,
@@ -104,7 +104,7 @@ const SignInView = () => {
             </form>
             <div className="signIn__register">
                 <p>
-                    ¿No tenes cuenta?{" "}
+                    ¿No tenes cuenta?
                     <Link to="/login/register"> Registrate </Link>{" "}
                 </p>
             </div>

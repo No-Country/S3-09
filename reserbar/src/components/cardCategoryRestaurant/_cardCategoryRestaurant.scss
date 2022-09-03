@@ -1,0 +1,15 @@
+.categoryCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__image {
+        max-width: 200px;
+        object-fit: cover;
+        height: 150px;
+    }
+
+    &__text {
+        font-size: $fontSize-14;
+    }
+}

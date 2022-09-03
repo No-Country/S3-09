@@ -6,15 +6,13 @@ export const postSignInReducer = (
     state = initialState,
     { type, userData, error }
 ) => {
-    
-  switch (type) {
-    case POST_SINGIN_SUCCES:
-            // console.log(JSON.stringify(userData.token));
+    switch (type) {
+        case POST_SINGIN_SUCCES:
             localStorage.setItem("token", JSON.stringify(userData.token));
-            window.location.href = "/"
-            return {
-                state: userData,
-            };
+            localStorage.setItem("userId", JSON.stringify(userData.user.id));
+            window.location.href = "/";
+            const newState = userData;
+            return newState;
 
         case POST_SINGIN_ERROR:
             return console.log("SIGN IN POST ERROR", error);

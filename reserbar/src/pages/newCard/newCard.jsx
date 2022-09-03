@@ -14,6 +14,7 @@ import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
 import { Container } from "@mui/system";
 import CustomSubmitInputForm from "../../components/customSubmitInputForm/customSubmitInputForm";
+
 import { addNewCardAction } from "../../redux/actions/addNewCardAction";
 import CustomInputForm from "../../components/customInputForm/customInputForm";
 import { addNewCardReducer } from "../../redux/reducers/addNewCardReducer";
@@ -158,7 +159,5 @@ const NewCard = () => {
         </>
     );
 };
-
-
 
 export default NewCard;
