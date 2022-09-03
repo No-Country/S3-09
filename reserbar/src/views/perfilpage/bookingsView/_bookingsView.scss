@@ -1,0 +1,54 @@
+.bookingsContainer {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    &__navigation {
+        background-color: $color-primary;
+        width: 70%;
+        height: 50px;
+        border-radius: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        &__navButtonLeft {
+            color: $color-white;
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            height: 40px;
+            width: 49%;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+
+        &__navButtonRight {
+            color: $color-white;
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            height: 40px;
+            width: 49%;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+    }
+
+    &__outlet {
+        height: 65%;
+        background-color: red;
+        width: 80%;
+    }
+}
+
+.bookingActive {
+    background-color: $color-lightPrimary;
+}

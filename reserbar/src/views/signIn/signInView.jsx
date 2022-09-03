@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
@@ -35,7 +34,7 @@ const SignInView = () => {
         }),
         onSubmit: async (values) => {
             dispatch(
-            postSignInAction({
+                postSignInAction({
                     email: values.email,
                     password: values.password,
                 })
@@ -81,7 +80,7 @@ const SignInView = () => {
     const handleClickGoogleSignIn = () => {
         console.log("CONNECT WITH GOOGLE");
     };
-     
+
     return (
         <section className="signIn">
             <form onSubmit={handleSubmit} className="signIn__form">

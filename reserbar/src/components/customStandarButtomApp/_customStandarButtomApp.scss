@@ -1,0 +1,18 @@
+.godButton {
+    width: 100%;
+    min-width: 250px;
+    min-height: 40px;
+    background-color: $color-primary;
+    border: 1px solid $color-primary;
+    border-radius: 10px;
+    letter-spacing: 0.5px;
+    color: $color-white;
+    transition: 0.5s;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0px 5px 10px $color-black;
+
+    &:hover {
+        transform: scale(0.9);
+    }
+}

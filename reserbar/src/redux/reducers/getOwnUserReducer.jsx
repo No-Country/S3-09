@@ -8,8 +8,8 @@ export const getOwnUserReducer = (
 ) => {
     switch (type) {
         case GET_OWN_USER_SUCCESS:
-            const newState = ownUserData
-            return newState
+            const newState = ownUserData;
+            return newState;
 
         case GET_OWN_USER_ERROR:
             return console.log("SIGN IN POST ERROR", error);

@@ -1,11 +1,10 @@
 import { GET_RESTAURANTS_ERROR, GET_RESTAURANTS_SUCCESS } from "../types";
-import Axios from 'axios'
+import Axios from "axios";
 import { baseUrl } from "../../api/baseUrl";
 
 export const getAllRestaurantsAction = () => async (dispatch) => {
     try {
-        Axios.get(`${baseUrl}api/v1/restaurants`, {
-        }).then((response) => {
+        Axios.get(`${baseUrl}api/v1/restaurants`, {}).then((response) => {
             dispatch({
                 type: GET_RESTAURANTS_SUCCESS,
                 restaurants: response.data.restaurants,

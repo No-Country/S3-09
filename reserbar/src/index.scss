@@ -9,10 +9,19 @@
 // SubPages
 @import "./pages/subPages/myIdSubPage/myIdSubPage"; // QR.
 @import "./pages/subPages/searchSubPage/searchSubPage"; // Explore restaurants.
+@import "./pages/subPages/perfilSubPage/perfilSubPage"; // Perfil page container.
 
 // Views
 @import "./views/signIn/signInView"; // View Sign in.
 @import "./views/register/registerView"; // View Register.
+@import "./views/perfilpage/homeView/homeView."; // Perfil home view.
+@import "./views/perfilpage/bookingsView/bookingsView"; // Perfil bookigns viwe.
+@import "./views/perfilpage/bookingsView/activesVIew/activesVIew"; // Bookings actives.
+@import "./views/perfilpage/bookingsView/historyVIew/historyView"; // Bookings history.
+@import "./views/perfilpage/favoritesView/favoritesView"; // Perfil favorites view.
+@import "./views/perfilpage/paymentView/paymentView"; // Perfil payment view.
+@import "./views/perfilpage/userView/userView"; // Perfil user view.
+@import "./views/perfilpage/supportView/supoortView"; // Perfil suport view.
 
 // Components.
 @import "./components/logoReserbar/logoReserbar"; // Logo reserbar.
@@ -22,6 +31,10 @@
 @import "./components/drawerFooterNavLinks/drawerFooterNavLinks"; // Navigation.
 @import "./components/serchRestaurantsInput/serchRestaurantsInput"; // Input search restaurants.
 @import "./components/cardCategoryRestaurant/cardCategoryRestaurant"; // Category restaurante Card.
+@import "./components/customStandarButtomApp/customStandarButtomApp"; // This buttom is the god of the standar buttons.
+@import "./components/avatarUser/avatarUser"; // Circle avatar user.
+@import "./components/userDataText/userDataText"; // Target with data abaut the user
+@import "./components/iconSocial/iconSocial"; // Social icon.
 
 body {
     margin: 0;

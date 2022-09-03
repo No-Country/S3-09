@@ -1,0 +1,25 @@
+.boxSocialIcon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-primary;
+    padding: 10px;
+    color: $color-white;
+    border-radius: 10px;
+    transition: 0.5s;
+    min-width: 80px;
+    min-height: 70px;
+
+    &:hover {
+        transform: scale(0.9);
+    }
+
+    & svg {
+        font-size: $fontSize-32;
+    }
+
+    & p {
+        font-size: $fontSize-14;
+    }
+}

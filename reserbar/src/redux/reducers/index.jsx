@@ -12,6 +12,6 @@ export const rootReducers = combineReducers({
     postRegisterReducer: postRegisterReducer, // POST Register a user.
     postSignInReducer: postSignInReducer, // POST Sign In user.
     getOwnUserReducer: getOwnUserReducer, // GET info about own user
-    getAllRestaurantsReducer: getAllRestaurantsReducer, // GET all restaurants. 
-    setSearcRestaurantsReducer: setSearcRestaurantsReducer // SET search category restaurants.
+    getAllRestaurantsReducer: getAllRestaurantsReducer, // GET all restaurants.
+    setSearcRestaurantsReducer: setSearcRestaurantsReducer, // SET search category restaurants.
 });

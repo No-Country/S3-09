@@ -1,34 +1,37 @@
-import React, { useCallback } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { CgSearch } from 'react-icons/cg'
-import { setSearchCategoryRestaurantsAction } from '../../redux/actions/setSearchRestaurantsActions'
+import React, { useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { CgSearch } from "react-icons/cg";
+import { setSearchCategoryRestaurantsAction } from "../../redux/actions/setSearchRestaurantsActions";
 
 const SerchRestaurantsInput = () => {
-
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     // String search
-    const searchText = useSelector(store => store.setSearcRestaurantsReducer)
+    const searchText = useSelector((store) => store.setSearcRestaurantsReducer);
 
     // handle search input
-    const handleSearchCategorys = useCallback(evento => {
-        dispatch(setSearchCategoryRestaurantsAction({
-            search: evento.target.value
-        }))
-
-    },[dispatch, setSearchCategoryRestaurantsAction])
+    const handleSearchCategorys = useCallback(
+        (evento) => {
+            dispatch(
+                setSearchCategoryRestaurantsAction({
+                    search: evento.target.value,
+                })
+            );
+        },
+        [dispatch, setSearchCategoryRestaurantsAction]
+    );
 
     return (
-        <div className='searchRestaurants'>
+        <div className="searchRestaurants">
             <CgSearch />
-            <input 
+            <input
                 type="text"
-                placeholder='Buscar restaurantes ...'
+                placeholder="Buscar restaurantes ..."
                 onChange={handleSearchCategorys}
                 value={searchText}
             />
         </div>
-    )
-}
+    );
+};
 
-export default SerchRestaurantsInput
+export default SerchRestaurantsInput;

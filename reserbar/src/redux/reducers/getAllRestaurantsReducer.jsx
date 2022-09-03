@@ -8,8 +8,8 @@ export const getAllRestaurantsReducer = (
 ) => {
     switch (type) {
         case GET_RESTAURANTS_SUCCESS:
-            const newState = restaurants
-            return newState
+            const newState = restaurants;
+            return newState;
 
         case GET_RESTAURANTS_ERROR:
             return console.log("GET RESTAURANTS ERROR", error);
